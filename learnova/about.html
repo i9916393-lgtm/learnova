@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — LearnNova</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+
+  <style>
+    #scroll-top{display:none;position:fixed;bottom:30px;right:30px;z-index:999;width:42px;height:42px;background:var(--blue);color:var(--white);border:none;border-radius:50%;font-size:1rem;cursor:pointer;transition:background var(--transition);}
+    #scroll-top:hover{background:var(--blue-light);}
+
+    /* Team card styling */
+    .team-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(59,139,212,0.15);
+      border-radius: var(--radius-lg);
+      padding: var(--gap-lg) var(--gap-md);
+      text-align: center;
+      transition: all 0.3s;
+      height: 100%; /* Ensures uniform height */
+    }
+    .team-card:hover {
+      border-color: var(--blue);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    /* Upgraded from text initials to premium image framing */
+    .team-avatar-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto var(--gap-md);
+      border: 3px solid rgba(59,139,212,0.4);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+      display: block;
+    }
+    .team-name {
+      font-family: var(--font-heading);
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--white); margin-bottom: 6px;
+    }
+    .team-role {
+      font-size: 0.78rem; color: var(--blue);
+      font-family: var(--font-heading);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: var(--gap-sm);
+    }
+    .team-skills { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+
+    /* Mission Section Feature Image styling */
+    .mission-img-wrapper {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .mission-img-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,25,47,0) 50%, rgba(10,25,47,0.7));
+    }
+    .mission-img-wrapper img {
+      transition: transform 0.5s ease;
+    }
+    .mission-img-wrapper:hover img {
+      transform: scale(1.03);
+    }
+
+    /* Horizontal timeline (roadmap) */
+    .roadmap-track {
+      position: relative;
+      padding: 40px 0 20px;
+    }
+    .roadmap-track::before {
+      content: '';
+      position: absolute;
+      top: 20px; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue), var(--purple));
+    }
+    .roadmap-item {
+      position: relative;
+      text-align: center;
+    }
+    .roadmap-dot {
+      width: 16px; height: 16px;
+      background: var(--blue);
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      position: relative;
+      z-index: 1;
+      border: 3px solid var(--navy);
+      box-shadow: 0 0 12px rgba(59,139,212,0.5);
+    }
+    .roadmap-dot.purple { background: var(--purple); box-shadow: 0 0 12px rgba(123,92,240,0.5); }
+    .roadmap-year {
+      font-family: var(--font-heading);
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--blue); letter-spacing: 0.1em;
+      margin-bottom: 6px;
+    }
+    .roadmap-title {
+      font-family: var(--font-heading);
+      font-size: 0.8rem; color: var(--white);
+      margin-bottom: 6px;
+    }
+    .roadmap-desc {
+      font-size: 0.78rem; color: var(--gray-300); line-height: 1.5;
+    }
+
+    /* Value card */
+    .value-card {
+      background: var(--navy-light);
+      border: 1px solid rgba(59,139,212,0.1);
+      border-radius: var(--radius-md);
+      padding: var(--gap-md);
+      display: flex; gap: var(--gap-sm); align-items: flex-start;
+      transition: all 0.3s;
+    }
+    .value-card:hover { border-color: rgba(59,139,212,0.3); transform: translateX(4px); }
+    .value-icon { font-size: 1.4rem; color: var(--blue); flex-shrink: 0; margin-top: 2px; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container nav-container">
+      
+      <a href="index.html" class="navbar-brand">
+        LEARN<span>NOVA</span>
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#learnNovaNavbar">
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="learnNovaNavbar">
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
+          <li class="nav-item"><a href="index.html" class="nav-link ">Home</a></li>
+          <li class="nav-item"><a href="how-it-works.html" class="nav-link">Workflow</a></li>
+          <li class="nav-item"><a href="features.html" class="nav-link">Features</a></li>
+          <li class="nav-item"><a href="profiles.html" class="nav-link">Students</a></li>
+          <li class="nav-item"><a href="match-demo.html" class="nav-link">Demo</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          
+          <li class="nav-item ms-lg-3"><a href="login.html" class="nav-link">Login</a></li>
+          <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
+            <a href="signup.html" class="btn btn-primary navbar-btn-original">
+              <i class="fa-solid fa-user-plus me-1"></i>SignUp
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+  <div style="margin-top: 85px;"></div>
+
+ <section class="page-header text-center" style="position: relative; background: linear-gradient(135deg, rgba(10, 25, 47, 0.93) 25%, rgba(23, 42, 69, 0.85) 100%), url('https://images.unsplash.com/photo-1531535934200-a57a197087f6?auto=format&fit=crop&w=1600&q=80') no-repeat center center; background-size: cover; padding: 140px 0 70px 0; border-bottom: 1px solid rgba(59, 139, 212, 0.2); overflow: hidden;">
+  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--blue), var(--purple), transparent);"></div>
+  <div class="container" data-aos="fade-down">
+    <h1 class="display-4 fw-bold text-white mb-2">About Our Vision</h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="index.html" style="color: var(--blue); text-decoration: none;">Home</a></li>
+        <li class="breadcrumb-item active text-gray-400" aria-current="page">About</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+  <section class="section-sm">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="section-badge">Our Mission</div>
+          <h2 class="section-title mt-2">Breaking <span>The Silos</span></h2>
+          <p class="mb-4">
+            LearnNova was born from a simple observation: students with complementary skills sit in the same building but never connect. A designer who can't code. A coder who can't design. Both paying for courses the other could teach for free.
+          </p>
+          <p class="mb-4">
+            We built LearnNova to fix this — a peer-to-peer skill exchange ecosystem that transforms isolated learners into a powerful collaborative campus network.
+          </p>
+          <div style="border-left:2px solid var(--blue);padding:14px 20px;background:rgba(59,139,212,0.06);border-radius:0 var(--radius-sm) var(--radius-sm) 0;">
+            <p style="color:var(--gray-100);font-style:italic;margin:0;">
+              "Turning individual learners into a powerful collaborative workforce."
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="150">
+          <div class="mission-img-wrapper mb-4">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" alt="Students Collaborating" class="img-fluid" />
+          </div>
+          
+          <div class="row g-3">
+            <div class="col-12">
+              <div class="value-card">
+                <div class="value-icon"><i class="fa-solid fa-handshake"></i></div>
+                <div>
+                  <div class="card-title mb-1">Peer-to-Peer Exchange</div>
+                  <p class="card-text" style="font-size:0.88rem;">No teachers, no fees — students teach each other based on what they already know.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="value-card">
+                <div class="value-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                  <div class="card-title mb-1">Verified Growth</div>
+                  <p class="card-text" style="font-size:0.88rem;">Every swap earns a digital badge — proof of learning that goes beyond classroom grades.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="value-card">
+                <div class="value-icon"><i class="fa-solid fa-globe"></i></div>
+                <div>
+                  <div class="card-title mb-1">Campus Unity</div>
+                  <p class="card-text" style="font-size:0.88rem;">Breaking department barriers to create one unified, cross-disciplinary student network.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--navy-light);">
+    <div class="container">
+      <div class="section-header text-center" data-aos="fade-up">
+        <div class="section-badge">The Builders</div>
+        <h2 class="section-title">Team <span>NovaSync</span></h2>
+        <p class="section-subtitle mx-auto">
+          Aptech students who designed and developed an innovative platform to drive campus collaboration.
+        </p>
+      </div>
+
+      <div class="row g-4 justify-content-center align-items-stretch">
+        <div class="col-md-6 col-lg-5" data-aos="fade-up" data-aos-delay="100">
+          <div class="team-card" style="border-color: rgba(59,139,212,0.4); box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=400&q=80" alt="Ibrahim Kamran" class="team-avatar-img" />
+            <div class="team-name">Ibrahim Kamran</div>
+            <div class="team-role mb-3" style="color: #ffffff; background: var(--blue); padding: 3px 10px; border-radius: 4px; display: inline-block;">Lead Developer &amp; Core Architect</div>
+            <p class="card-text mb-4" style="font-size:0.88rem; text-align: justify;">
+              Ibrahim is the core driving force behind LearnNova, architecting and executing every phase of the platform. From designing the complex skill matching logic, jQuery filters, and Chart.js integrations to handling full-stack system structures, he single-handedly built and managed the absolute entirety of the application logic.
+            </p>
+            <div class="team-skills mt-auto">
+              <span class="skill-badge">JavaScript</span>
+              <span class="skill-badge">jQuery</span>
+              <span class="skill-badge">Chart.js</span>
+              <span class="skill-badge">Bootstrap 5</span>
+              <span class="skill-badge purple">C# / Architecture</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-5" data-aos="fade-up" data-aos-delay="200">
+          <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&h=400&q=80" alt="Eisha Fatima" class="team-avatar-img" />
+            <div class="team-name">Eisha Fatima</div>
+            <div class="team-role mb-3" style="display: inline-block; padding: 3px 0;">UI/UX Designer &amp; Frontend Contributor</div>
+            <p class="card-text mb-4" style="font-size:0.88rem; text-align: justify;">
+              Eisha contributed to the user interface design and layout presentation of LearnNova. She helped mold the visual aesthetics — coordinating the dark navy themes and typography settings to ensure the user experience matches the platform's execution goals perfectly.
+            </p>
+            <div class="team-skills mt-auto">
+              <span class="skill-badge">HTML5 / CSS3</span>
+              <span class="skill-badge">Bootstrap</span>
+              <span class="skill-badge">Figma Assets</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-5" data-aos="fade-up">
+        <div style="display:inline-flex; align-items:center; gap:var(--gap-sm); background:rgba(59,139,212,0.06); border:1px solid rgba(59,139,212,0.2); border-radius:var(--radius-xl); padding:16px 32px;">
+          <div>
+            <div style="font-family:var(--font-heading);font-size:0.65rem;color:var(--purple);letter-spacing:0.15em;">PROJECT</div>
+            <div style="font-family:var(--font-heading);font-size:0.9rem;font-weight:700;color:var(--white);">APTECH VISION 2026</div>
+          </div>
+          <div style="width:1px;height:36px;background:rgba(255,255,255,0.15);"></div>
+          <div>
+            <div style="font-family:var(--font-heading);font-size:0.65rem;color:var(--blue);letter-spacing:0.15em;">TEAM LEAD</div>
+            <div style="font-family:var(--font-heading);font-size:0.9rem;font-weight:700;color:var(--white);">IBRAHIM KAMRAN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header text-center" data-aos="fade-up">
+        <div class="section-badge">Vision</div>
+        <h2 class="section-title">Roadmap <span>2026–2033</span></h2>
+        <p class="section-subtitle mx-auto">LearnNova starts at Aptech — but the vision is global.</p>
+      </div>
+
+      <div class="d-none d-lg-block" data-aos="fade-up" data-aos-delay="100">
+        <div class="roadmap-track">
+          <div class="row g-0">
+            <div class="col roadmap-item">
+              <div class="roadmap-dot pulse-ring"></div>
+              <div class="roadmap-year">2026</div>
+              <div class="roadmap-title">Campus Launch</div>
+              <div class="roadmap-desc">LearnNova live at Aptech Karachi. Core skill swap platform deployed.</div>
+            </div>
+            <div class="col roadmap-item">
+              <div class="roadmap-dot"></div>
+              <div class="roadmap-year">2027</div>
+              <div class="roadmap-title">Multi-Campus</div>
+              <div class="roadmap-desc">Expand to all Aptech Pakistan centers. Cross-center skill network.</div>
+            </div>
+            <div class="col roadmap-item">
+              <div class="roadmap-dot purple"></div>
+              <div class="roadmap-year">2028</div>
+              <div class="roadmap-title">Mobile App</div>
+              <div class="roadmap-desc">Native mobile integration. iOS &amp; Android apps launched.</div>
+            </div>
+            <div class="col roadmap-item">
+              <div class="roadmap-dot purple"></div>
+              <div class="roadmap-year">2030</div>
+              <div class="roadmap-title">Multilingual</div>
+              <div class="roadmap-desc">Urdu, Arabic, and regional language support added.</div>
+            </div>
+            <div class="col roadmap-item">
+              <div class="roadmap-dot" style="background:linear-gradient(135deg,var(--blue),var(--purple));"></div>
+              <div class="roadmap-year">2033</div>
+              <div class="roadmap-title">Global Campus Sync</div>
+              <div class="roadmap-desc">Aptech students worldwide connected in one skill exchange network.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-lg-none" data-aos="fade-up">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot pulse-ring"></div>
+            <div class="timeline-year">2026</div>
+            <div class="timeline-title">Campus Launch</div>
+            <p class="card-text" style="font-size:0.88rem;">LearnNova live at Aptech Karachi. Core skill swap platform deployed for all students.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-year">2027</div>
+            <div class="timeline-title">Multi-Campus Expansion</div>
+            <p class="card-text" style="font-size:0.88rem;">Expand to all Aptech Pakistan centers. Cross-center skill matching and network.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:var(--purple);"></div>
+            <div class="timeline-year">2028</div>
+            <div class="timeline-title">Native Mobile App</div>
+            <p class="card-text" style="font-size:0.88rem;">iOS and Android apps launched with full feature parity.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:var(--purple);"></div>
+            <div class="timeline-year">2030</div>
+            <div class="timeline-title">Multilingual Support</div>
+            <p class="card-text" style="font-size:0.88rem;">Urdu, Arabic, and regional language interfaces added for broader accessibility.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:linear-gradient(135deg,var(--blue),var(--purple));box-shadow:0 0 16px rgba(123,92,240,0.5);"></div>
+            <div class="timeline-year">2033</div>
+            <div class="timeline-title">Global Campus Sync</div>
+            <p class="card-text" style="font-size:0.88rem;">All Aptech students worldwide connected in one unified skill exchange network.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm" style="background:var(--navy-light);">
+    <div class="container">
+      <div class="section-header text-center" data-aos="fade-up">
+        <div class="section-badge">The Foundation</div>
+        <h2 class="section-title">Tech <span>Stack</span></h2>
+      </div>
+      <div class="row g-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center">
+            <div class="card-icon"><i class="fa-brands fa-html5"></i></div>
+            <div class="card-title">HTML5</div>
+            <p class="card-text" style="font-size:0.82rem;">Semantic structure &amp; modern markup for every page.</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center">
+            <div class="card-icon"><i class="fa-brands fa-css3-alt"></i></div>
+            <div class="card-title">CSS3</div>
+            <p class="card-text" style="font-size:0.82rem;">Custom properties, keyframes, and responsive grid layouts.</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center">
+            <div class="card-icon"><i class="fa-brands fa-bootstrap"></i></div>
+            <div class="card-title">Bootstrap 5</div>
+            <p class="card-text" style="font-size:0.82rem;">Responsive grid, modals, and utility classes throughout.</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="card text-center">
+            <div class="card-icon"><i class="fa-brands fa-js"></i></div>
+            <div class="card-title">JavaScript &amp; Core Logic</div>
+            <p class="card-text" style="font-size:0.82rem;">Advanced logical operations, dynamic interactive data, and systems programming.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container text-center" data-aos="zoom-in">
+      <h2 class="section-title mb-3">Join the <span>Movement</span></h2>
+      <p class="section-subtitle mx-auto mb-4">Register your profile and become part of the campus skill revolution.</p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-user-plus me-1"></i> Register Now</a>
+        <a href="match-demo.html" class="btn btn-outline">Try Match Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer-brand">LEARN<span>NOVA</span></div>
+          <p class="footer-tagline">Transforming Students Into Collaborative Learners</p>
+          <p style="font-size:0.85rem;color:var(--gray-500);">Team NovaSync — Aptech Vision 2026.</p>
+        </div>
+        <div class="col-lg-2 col-6">
+          <div class="footer-heading">Pages</div>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="how-it-works.html" class="footer-link">How It Works</a></li>
+            <li><a href="features.html" class="footer-link">Features</a></li>
+            <li><a href="profiles.html" class="footer-link">Students</a></li>
+            <li><a href="match-demo.html" class="footer-link">Match Demo</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-6">
+          <div class="footer-heading">More</div>
+          <ul class="footer-links">
+            <li><a href="about.html" class="footer-link">About</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <div class="footer-heading">Tech Stack</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="skill-badge">HTML5</span>
+            <span class="skill-badge">CSS3</span>
+            <span class="skill-badge">Bootstrap 5</span>
+            <span class="skill-badge">jQuery</span>
+            <span class="skill-badge">Chart.js</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 LearnNova — Team NovaSync. Built for Aptech Vision 2026.</p>
+        <p class="footer-copy">Ibrahim Kamran (Lead) &amp; Eisha Fatima</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top" title="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    $(document).ready(function(){
+      setTimeout(function(){ $('#preloader').addClass('hide'); setTimeout(function(){ $('#preloader').remove(); },400); },700);
+    });
+  </script>
+</body>
+</html>

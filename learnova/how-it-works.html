@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How It Works — LearnNova</title>
+  <meta name="description" content="See how LearnNova connects students through a 4-step skill exchange workflow: Profile, Discover, Swap, Collaborate." />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+
+  <style>
+    /* Step active state (jQuery stepper) */
+    .step-card.active-step {
+      border-color: var(--blue) !important;
+      box-shadow: 0 0 28px rgba(59,139,212,0.25);
+    }
+    .step-card.active-step .step-number {
+      background: var(--purple);
+    }
+    
+    /* Fixed Height & Layout Logic for Equal Step Cards */
+    .step-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+    }
+    .step-card .card-text {
+      flex-grow: 1; /* Pushes content below to align perfectly at the bottom */
+    }
+
+    /* Connector arrow between steps */
+    .step-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(59,139,212,0.4);
+      font-size: 1.2rem;
+      height: 100%;
+      min-height: 250px; /* Aligns arrows perfectly vertically centered with cards */
+    }
+    
+    /* Case study box */
+    .case-box {
+      background: rgba(59,139,212,0.06);
+      border: 1px solid rgba(59,139,212,0.2);
+      border-radius: var(--radius-md);
+      padding: var(--gap-md) var(--gap-lg);
+    }
+    /* Scroll top */
+    #scroll-top {
+      display: none; position: fixed; bottom: 30px; right: 30px;
+      z-index: 999; width: 42px; height: 42px;
+      background: var(--blue); color: var(--white);
+      border: none; border-radius: 50%; font-size: 1rem;
+      cursor: pointer; transition: background var(--transition);
+    }
+    #scroll-top:hover { background: var(--blue-light); }
+    
+    /* Fixed Step Thumbnails style */
+    .step-thumb-img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      margin-top: auto; /* Ensures image snaps to the exact bottom border of card */
+      padding-top: var(--gap-sm);
+      border: 1px solid rgba(59, 139, 212, 0.15);
+      transition: transform var(--transition);
+    }
+    .step-card:hover .step-thumb-img {
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       NAVBAR
+       ============================================= -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container nav-container">
+      <a href="index.html" class="navbar-brand">LEARN<span>NOVA</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#learnNovaNavbar">
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="learnNovaNavbar">
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="how-it-works.html" class="nav-link active">Workflow</a></li>
+          <li class="nav-item"><a href="features.html" class="nav-link">Features</a></li>
+          <li class="nav-item"><a href="profiles.html" class="nav-link">Students</a></li>
+          <li class="nav-item"><a href="match-demo.html" class="nav-link">Demo</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          <li class="nav-item ms-lg-3"><a href="login.html" class="nav-link">Login</a></li>
+          <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
+            <a href="signup.html" class="btn btn-primary navbar-btn-original">
+              <i class="fa-solid fa-user-plus me-1"></i>SignUp
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div style="margin-top: 85px;"></div>
+
+  <!-- =============================================
+       PAGE HERO
+       ============================================= -->
+  <section class="page-header text-center" style="padding-top: 130px; padding-bottom: 60px;">
+    <div class="container" data-aos="fade-down">
+      <h1 class="display-4 fw-bold text-white mb-2">How It Works</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center mb-0">
+          <li class="breadcrumb-item"><a href="index.html" style="color: var(--blue); text-decoration: none;">Home</a></li>
+          <li class="breadcrumb-item active text-gray-400" aria-current="page">How It Works</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- =============================================
+       4-STEP WORKFLOW — Interactive Stepper
+       ============================================= -->
+  <section class="section-sm">
+    <div class="container">
+
+      <!-- Step tabs -->
+      <div class="d-flex justify-content-center gap-2 flex-wrap mb-5" id="step-tabs" data-aos="fade-up">
+        <button class="btn btn-primary step-tab-btn" data-step="1">01 · Profile</button>
+        <button class="btn btn-outline step-tab-btn" data-step="2">02 · Discover</button>
+        <button class="btn btn-outline step-tab-btn" data-step="3">03 · Swap</button>
+        <button class="btn btn-outline step-tab-btn" data-step="4">04 · Collaborate</button>
+      </div>
+
+      <!-- Unified Row Structure with Equal Heights Layout -->
+      <div class="row g-2 align-items-stretch justify-content-center" data-aos="fade-up" data-aos-delay="150">
+
+        <!-- STEP 1 -->
+        <div class="col-md col-lg">
+          <div class="step-card active-step h-100" id="step-1">
+            <div class="step-number">01</div>
+            <div class="step-icon"><i class="fa-solid fa-user-plus"></i></div>
+            <div class="step-title">Profile</div>
+            <p class="card-text">
+              Create your LearnNova profile. List the skills you already have — programming, design, database, anything. This is your campus identity.
+            </p>
+            <div class="mt-3 mb-3">
+              <span class="skill-badge">Your Name</span>
+              <span class="skill-badge purple mt-1 d-inline-block">Your Skills</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=400&q=80" alt="Setup Profile Workspace" class="step-thumb-img" />
+          </div>
+        </div>
+
+        <!-- ARROW 1 -->
+        <div class="col-auto d-none d-xl-flex align-items-center justify-content-center px-1">
+          <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="col-md col-lg">
+          <div class="step-card h-100" id="step-2">
+            <div class="step-number">02</div>
+            <div class="step-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="step-title">Discover</div>
+            <p class="card-text">
+              Our platform scans all profiles and shows you students whose skills complement yours. No more guessing — instant intelligent matching.
+            </p>
+            <div class="mt-3 mb-3">
+              <span class="skill-badge">Filter by Skill</span>
+              <span class="skill-badge purple mt-1 d-inline-block">By Department</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=400&q=80" alt="Discover Matches Interaction" class="step-thumb-img" />
+          </div>
+        </div>
+
+        <!-- ARROW 2 -->
+        <div class="col-auto d-none d-xl-flex align-items-center justify-content-center px-1">
+          <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="col-md col-lg">
+          <div class="step-card h-100" id="step-3">
+            <div class="step-number">03</div>
+            <div class="step-icon"><i class="fa-solid fa-handshake"></i></div>
+            <div class="step-title">Swap</div>
+            <p class="card-text">
+              Send a swap request to your match. Schedule a session using the Swap Scheduler. Teach what you know, learn what you need.
+            </p>
+            <div class="mt-3 mb-3">
+              <span class="skill-badge">Send Invite</span>
+              <span class="skill-badge purple mt-1 d-inline-block">Book Session</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80" alt="Initiate Skill Swap Session" class="step-thumb-img" />
+          </div>
+        </div>
+
+        <!-- ARROW 3 -->
+        <div class="col-auto d-none d-xl-flex align-items-center justify-content-center px-1">
+          <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+        </div>
+
+        <!-- STEP 4 -->
+        <div class="col-md col-lg">
+          <div class="step-card h-100" id="step-4">
+            <div class="step-number">04</div>
+            <div class="step-icon"><i class="fa-solid fa-people-group"></i></div>
+            <div class="step-title">Collaborate</div>
+            <p class="card-text">
+              Build real-world projects together. Earn a verified Skill Badge. Add your collaboration to your Portfolio Builder.
+            </p>
+            <div class="mt-3 mb-3">
+              <span class="skill-badge">Earn Badge</span>
+              <span class="skill-badge purple mt-1 d-inline-block">Build Portfolio</span>
+            </div>
+            <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=400&q=80" alt="Claim Verified Skill Badges" class="step-thumb-img" />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       PAIRING ALGORITHM — Deep Dive
+       ============================================= -->
+  <section class="section" style="background:var(--navy-light);">
+    <div class="container">
+      <div class="section-header text-center" data-aos="fade-up">
+        <div class="section-badge">Intelligent Matching</div>
+        <h2 class="section-title">The Pairing <span>Algorithm</span></h2>
+        <p class="section-subtitle mx-auto">
+          How does LearnNova find the perfect match? Here's the logic behind the magic.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100 text-center">
+            <div class="card-icon"><i class="fa-solid fa-database"></i></div>
+            <div class="card-title">Step 1 — Data</div>
+            <p class="card-text">
+              Every student's offered skills and wanted skills are stored in structured data. The system holds a complete campus skill inventory.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100 text-center">
+            <div class="card-icon"><i class="fa-solid fa-code-compare"></i></div>
+            <div class="card-title">Step 2 — Compare</div>
+            <p class="card-text">
+              Your "I want to learn" is matched against other students' "I can teach" — and vice versa. Mutual interest = perfect match.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card h-100 text-center">
+            <div class="card-icon"><i class="fa-solid fa-bullseye"></i></div>
+            <div class="card-title">Step 3 — Connect</div>
+            <p class="card-text">
+              Only 100% aligned matches are shown. No random suggestions — every result is a genuine complementary fit.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case Study -->
+      <div class="case-box mt-5" data-aos="zoom-in">
+        <div class="row align-items-center g-4">
+          <div class="col-md-4 text-center">
+            <div style="background:rgba(59,139,212,0.1);border:1px solid rgba(59,139,212,0.25);border-radius:var(--radius-md);padding:20px;">
+              <div style="font-family:var(--font-heading);font-size:0.7rem;color:var(--blue);letter-spacing:0.12em;margin-bottom:10px;">STUDENT A</div>
+              <div style="font-size:0.9rem;color:var(--white);margin-bottom:8px;font-weight:500;">Ahmed (SECP Dept)</div>
+              <span class="skill-badge d-block mb-2">Knows: C#</span>
+              <span class="skill-badge purple d-block">Wants: Bootstrap</span>
+            </div>
+          </div>
+
+          <div class="col-md-4 text-center">
+            <div class="match-pulse" style="font-size:2rem;color:var(--blue);">
+              <i class="fa-solid fa-arrows-left-right"></i>
+            </div>
+            <div style="font-family:var(--font-heading);font-size:0.65rem;color:var(--blue);letter-spacing:0.12em;margin-top:10px;">
+              100% MATCH
+            </div>
+            <div style="font-size:0.8rem;color:var(--gray-300);margin-top:6px;">Complementary skills detected</div>
+          </div>
+
+          <div class="col-md-4 text-center">
+            <div style="background:rgba(123,92,240,0.1);border:1px solid rgba(123,92,240,0.25);border-radius:var(--radius-md);padding:20px;">
+              <div style="font-family:var(--font-heading);font-size:0.7rem;color:var(--purple);letter-spacing:0.12em;margin-bottom:10px;">STUDENT B</div>
+              <div style="font-size:0.9rem;color:var(--white);margin-bottom:8px;font-weight:500;">Sara (DIT Dept)</div>
+              <span class="skill-badge purple d-block mb-2">Knows: Bootstrap</span>
+              <span class="skill-badge d-block">Wants: C#</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       WHY IT WORKS — 3 REASONS
+       ============================================= -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header text-center" data-aos="fade-up">
+        <div class="section-badge">Why LearnNova</div>
+        <h2 class="section-title">Why This <span>Works</span></h2>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-glow h-100 p-4">
+            <div style="font-size:2rem;color:var(--blue);margin-bottom:var(--gap-sm);">
+              <i class="fa-solid fa-0" style="font-size:1rem;"></i>
+            </div>
+            <div class="card-title">Zero Cost</div>
+            <p class="card-text">
+              No fees. No subscriptions. Students exchange skills freely — what you have is exactly what someone else needs.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-glow h-100 p-4">
+            <div style="font-size:2rem;color:var(--blue);margin-bottom:var(--gap-sm);">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="card-title">Instant Matching</div>
+            <p class="card-text">
+              No waiting, no posting, no hoping. The algorithm surfaces the right person for you — immediately.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card-glow h-100 p-4">
+            <div style="font-size:2rem;color:var(--blue);margin-bottom:var(--gap-sm);">
+              <i class="fa-solid fa-trophy"></i>
+            </div>
+            <div class="card-title">Verified Growth</div>
+            <p class="card-text">
+              Every swap earns a verified Skill Badge. Your growth is tracked, visible, and portfolio-ready.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       CTA
+       ============================================= -->
+  <section class="section-sm" style="background:var(--navy-light);">
+    <div class="container text-center" data-aos="zoom-in">
+      <h2 class="section-title mb-3">Ready to <span>Start</span>?</h2>
+      <p class="section-subtitle mx-auto mb-4">
+        Register your profile and let the platform find your perfect learning partner.
+      </p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="signup.html" class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Register Now</a>
+        <a href="match-demo.html" class="btn btn-outline">Try Match Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-brand">LEARN<span>NOVA</span></div>
+          <p class="footer-tagline">Transforming Students Into Collaborative Learners</p>
+          <p style="font-size:0.85rem;color:var(--gray-500);">Team NovaSync — Aptech Vision 2026.</p>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6">
+          <div class="footer-heading">Pages</div>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="how-it-works.html" class="footer-link">How It Works</a></li>
+            <li><a href="features.html" class="footer-link">Features</a></li>
+            <li><a href="profiles.html" class="footer-link">Students</a></li>
+            <li><a href="match-demo.html" class="footer-link">Match Demo</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6">
+          <div class="footer-heading">More</div>
+          <ul class="footer-links">
+            <li><a href="about.html" class="footer-link">About</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-heading">Tech Stack</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="skill-badge">HTML5</span>
+            <span class="skill-badge">CSS3</span>
+            <span class="skill-badge">Bootstrap 5</span>
+            <span class="skill-badge">JavaScript</span>
+            <span class="skill-badge">jQuery</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 LearnNova — Team NovaSync. Built for Aptech Vision 2026.</p>
+        <p class="footer-copy">Eisha Fatima &amp; Ibrahim Kamran</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top" title="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+  $(document).ready(function () {
+    /* Step tab switcher */
+    $('.step-tab-btn').on('click', function () {
+      var step = $(this).data('step');
+
+      $('.step-tab-btn').removeClass('btn-primary').addClass('btn-outline');
+      $(this).removeClass('btn-outline').addClass('btn-primary');
+
+      $('.step-card').removeClass('active-step');
+      $('#step-' + step).addClass('active-step');
+
+      var cardTop = $('#step-' + step).offset().top - 120;
+      $('html,body').animate({ scrollTop: cardTop }, 500);
+    });
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Profiles — LearnNova</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+
+  <style>
+    #scroll-top{display:none;position:fixed;bottom:30px;right:30px;z-index:999;width:42px;height:42px;background:var(--blue);color:var(--white);border:none;border-radius:50%;font-size:1rem;cursor:pointer;transition:background var(--transition);}
+    #scroll-top:hover{background:var(--blue-light);}
+    .no-results{text-align:center;padding:60px 20px;color:var(--gray-500);display:none;}
+    .no-results i{font-size:2.5rem;margin-bottom:16px;display:block;}
+
+    /* Modal overrides */
+    .modal-content{background:var(--navy-light);border:1px solid rgba(59,139,212,0.2);color:var(--white);}
+    .modal-header{border-bottom:1px solid rgba(59,139,212,0.15);}
+    .modal-footer{border-top:1px solid rgba(59,139,212,0.15);}
+    .btn-close{filter:invert(1);}
+    .modal-title{font-family:var(--font-heading);font-size:0.9rem;letter-spacing:0.08em;}
+    .profile-avatar-img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--blue);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  margin-bottom: var(--gap-sm);
+  display: inline-block;
+}
+  </style>
+</head>
+<body>
+
+  <!-- <div id="preloader"><div class="pre-logo">LEARN<span>NOVA</span></div><div class="spinner"></div></div> -->
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container nav-container">
+    
+    <a href="index.html" class="navbar-brand">
+      LEARN<span>NOVA</span>
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#learnNovaNavbar">
+      <span class="toggler-bar"></span>
+      <span class="toggler-bar"></span>
+      <span class="toggler-bar"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="learnNovaNavbar">
+      <ul class="navbar-nav ms-auto align-items-center gap-1">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="how-it-works.html" class="nav-link">Workflow</a></li>
+        <li class="nav-item"><a href="features.html" class="nav-link">Features</a></li>
+        <li class="nav-item"><a href="profiles.html" class="nav-link active">Students</a></li>
+        <li class="nav-item"><a href="match-demo.html" class="nav-link">Demo</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        
+        <li class="nav-item ms-lg-3"><a href="login.html" class="nav-link">Login</a></li>
+        <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
+          <a href="signup.html" class="btn btn-primary navbar-btn-original">
+            <i class="fa-solid fa-user-plus me-1"></i>SignUp
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+<div style="margin-top: 85px;"></div>
+  <!-- PAGE HERO -->
+  <section class="page-header text-center" style="position: relative; background: linear-gradient(135deg, rgba(10, 25, 47, 0.93) 25%, rgba(23, 42, 69, 0.85) 100%), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80') no-repeat center center; background-size: cover; padding: 140px 0 70px 0; border-bottom: 1px solid rgba(59, 139, 212, 0.2); overflow: hidden;">
+  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--blue), var(--purple), transparent);"></div>
+  <div class="container" data-aos="fade-down">
+    <h1 class="display-4 fw-bold text-white mb-2">Student Profiles</h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="index.html" style="color: var(--blue); text-decoration: none;">Home</a></li>
+        <li class="breadcrumb-item active text-gray-400" aria-current="page">Students</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+  <!-- SEARCH & FILTER BAR -->
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="filter-bar" data-aos="fade-up">
+        <!-- Search -->
+        <input type="text" class="search-input" id="search-input" placeholder="Search by name or skill..." />
+
+        <!-- Skill filter buttons -->
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="html-css">HTML/CSS</button>
+        <button class="filter-btn" data-filter="javascript">JavaScript</button>
+        <button class="filter-btn" data-filter="bootstrap">Bootstrap</button>
+        <button class="filter-btn" data-filter="python">Python</button>
+        <button class="filter-btn" data-filter="csharp">C#</button>
+        <button class="filter-btn" data-filter="mysql">MySQL</button>
+        <button class="filter-btn" data-filter="php">PHP</button>
+        <button class="filter-btn" data-filter="figma">Figma</button>
+      </div>
+
+      <!-- Results count -->
+      <p id="results-count" style="font-size:0.85rem;color:var(--gray-500);margin-bottom:var(--gap-md);">
+        Showing <span id="count-num">12</span> students
+      </p>
+    </div>
+  </section>
+
+  <!-- PROFILES GRID -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="row g-4" id="profiles-grid">
+
+        <!-- Each card has data-skills for jQuery filter -->
+        <!-- data-name for search filter -->
+
+        <div class="col-md-6 col-lg-4 profile-item" data-skills="javascript bootstrap html-css" data-name="ahmed raza">
+  <div class="profile-card card-lift">
+    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&h=150&q=80" alt="Ahmed Raza" class="profile-avatar-img" />
+    <div class="profile-name">Ahmed Raza</div>
+            <div class="profile-dept"><i class="fa-solid fa-building me-1"></i> SECP — Web Development</div>
+            <div class="profile-skills-label">Offers</div>
+            <div class="profile-skills">
+              <span class="skill-badge">JavaScript</span>
+              <span class="skill-badge">Bootstrap</span>
+              <span class="skill-badge">HTML/CSS</span>
+            </div>
+            <div class="profile-skills-label">Wants to Learn</div>
+            <div class="profile-skills">
+              <span class="skill-badge purple">Python</span>
+              <span class="skill-badge purple">MySQL</span>
+            </div>
+            <button class="btn btn-outline w-100 mt-3" data-bs-toggle="modal" data-bs-target="#profileModal"
+              data-name="Ahmed Raza" data-dept="SECP — Web Development"
+              data-offers="JavaScript, Bootstrap, HTML/CSS"
+              data-wants="Python, MySQL"
+              data-bio="Ahmed is a frontend-focused student with strong JavaScript skills. He's built multiple Bootstrap-based UI projects and is now looking to strengthen his backend knowledge.">
+              View Profile
+            </button>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 profile-item" data-skills="python mysql php" data-name="sara khan">
+  <div class="profile-card card-lift">
+    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&h=150&q=80" alt="Sara Khan" class="profile-avatar-img" style="border-color: var(--purple);" />
+    <div class="profile-name">Sara Khan</div>
+            <div class="profile-dept"><i class="fa-solid fa-building me-1"></i> DIT — Database Management</div>
+            <div class="profile-skills-label">Offers</div>
+            <div class="profile-skills">
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge">MySQL</span>
+              <span class="skill-badge">PHP</span>
+            </div>
+            <div class="profile-skills-label">Wants to Learn</div>
+            <div class="profile-skills">
+              <span class="skill-badge purple">Bootstrap</span>
+              <span class="skill-badge purple">JavaScript</span>
+            </div>
+            <button class="btn btn-outline w-100 mt-3" data-bs-toggle="modal" data-bs-target="#profileModal"
+              data-name="Sara Khan" data-dept="DIT — Database Management"
+              data-offers="Python, MySQL, PHP"
+              data-wants="Bootstrap, JavaScript"
+              data-bio="Sara is a backend specialist who has designed multiple relational databases for student projects. She now wants to bring her work to life with modern frontend skills.">
+              View Profile
+            </button>
+          </div>
+        </div>
+
+       <div class="col-md-6 col-lg-4 profile-item" data-skills="figma html-css" data-name="zainab ali">
+  <div class="profile-card card-lift">
+    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&h=150&q=80" alt="Zainab Ali" class="profile-avatar-img" style="border-color: #0F6E56;" />
+    <div class="profile-name">Zainab Ali</div>
+            <div class="profile-dept"><i class="fa-solid fa-building me-1"></i> DGD — Graphic Design</div>
+            <div class="profile-skills-label">Offers</div>
+            <div class="profile-skills">
+              <span class="skill-badge">Figma</span>
+              <span class="skill-badge">HTML/CSS</span>
+            </div>
+            <div class="profile-skills-label">Wants to Learn</div>
+            <div class="profile-skills">
+              <span class="skill-badge purple">JavaScript</span>
+              <span class="skill-badge purple">Bootstrap</span>
+            </div>
+            <button class="btn btn-outline w-100 mt-3" data-bs-toggle="modal" data-bs-target="#profileModal"
+              data-name="Zainab Ali" data-dept="DGD — Graphic Design"
+              data-offers="Figma, HTML/CSS"
+              data-wants="JavaScript, Bootstrap"
+              data-bio="Zainab is a UI/UX enthusiast who turns ideas into beautiful designs. She has strong Figma skills and wants to bring her designs to life with code.">
+              View Profile
+            </button>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 profile-item" data-skills="csharp javascript" data-name="usman tariq">
+  <div class="profile-card card-lift">
+    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80" alt="Usman Tariq" class="profile-avatar-img" style="border-color: #854F0B;" />
+    <div class="profile-name">Usman Tariq</div>
+            <div class="profile-dept"><i class="fa-solid fa-building me-1"></i> SECP — Software Engineering</div>
+            <div class="profile-skills-label">Offers</div>
+            <div class="profile-skills">
+              <span class="skill-badge">C#</span>
+              <span class="skill-badge">JavaScript</span>
+            </div>
+            <div class="profile-skills-label">Wants to Learn</div>
+            <div class="profile-skills">
+              <span class="skill-badge purple">Figma</span>
+              <span class="skill-badge purple">HTML/CSS</span>
+            </div>
+            <button class="btn btn-outline w-100 mt-3" data-bs-toggle="modal" data-bs-target="#profileModal"
+              data-name="Usman Tariq" data-dept="SECP — Software Engineering"
+              data-offers="C#, JavaScript"
+              data-wants="Figma, HTML/CSS"
+              data-bio="Usman is a logic-first programmer comfortable with object-oriented C# development. He's looking to expand into design to become a full-stack contributor.">
+              View Profile
+            </button>
+          </div>
+        </div>
+<div class="col-md-6 col-lg-4 profile-item" data-skills="mysql php python" data-name="hira baig">
+  <div class="profile-card card-lift">
+    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80" alt="Hira Baig" class="profile-avatar-img" style="border-color: #0F6E56;" />
+    <div class="profile-name">Hira Baig</div>
+    <div class="profile-dept"><i class="fa-solid fa-building me-1"></i> DIT — Information Technology</div>
+    <div class="profile-skills-label">Offers</div>
+    <div class="profile-skills">
+      <span class="skill-badge">MySQL</span>
+      <span class="skill-badge">PHP</span>
+      <span class="skill-badge">Python</span>
+    </div>
+    <div class="profile-skills-label">Wants to Learn</div>
+    <div class="profile-skills">
+      <span class="skill-badge purple">C#</span>
+      <span class="skill-badge purple">Bootstrap</span>
+    </div>
+    <button class="btn btn-outline w-100 mt-3" data-bs-toggle="modal" data-bs-target="#profileModal"
+      data-name="Hira Baig" data-dept="DIT — Information Technology"
+      data-offers="MySQL, PHP, Python"
+      data-wants="C#, Bootstrap"
+      data-bio="Hira has built several data-driven applications using PHP and MySQL. She's passionate about backend efficiency and wants to improve her frontend skills.">
+      View Profile
+    </button>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 profile-item" data-skills="bootstrap html-css javascript" data-name="ali hassan">
+  <div class="profile-card card-lift">
+    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=150&h=150&q=80" alt="Ali Hassan" class="profile-avatar-img" style="border-color: var(--blue);" />
+    <div class="profile-name">Ali Hassan</div>
+    <div class="profile-dept"><i class="fa-solid fa-building me-1"></i> SECP — Frontend Track</div>
+    <div class="profile-skills-label">Offers</div>
+    <div class="profile-skills">
+      <span class="skill-badge">Bootstrap</span>
+      <span class="skill-badge">HTML/CSS</span>
+      <span class="skill-badge">JavaScript</span>
+    </div>
+    <div class="profile-skills-label">Wants to Learn</div>
+    <div class="profile-skills">
+      <span class="skill-badge purple">Python</span>
+      <span class="skill-badge purple">MySQL</span>
+    </div>
+    <button class="btn btn-outline w-100 mt-3" data-bs-toggle="modal" data-bs-target="#profileModal"
+      data-name="Ali Hassan" data-dept="SECP — Frontend Track"
+      data-offers="Bootstrap, HTML/CSS, JavaScript"
+      data-wants="Python, MySQL"
+      data-bio="Ali specializes in responsive UI design using Bootstrap and vanilla JS. He has an eye for clean layouts and wants to pair his frontend skills with backend capabilities.">
+      View Profile
+    </button>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 profile-item" data-skills="figma html-css bootstrap" data-name="maham sheikh">
+  <div class="profile-card card-lift">
+    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=150&h=150&q=80" alt="Maham Sheikh" class="profile-avatar-img" style="border-color: var(--purple);" />
+    <div class="profile-name">Maham Sheikh</div>
+    <div class="profile-dept"><i class="fa-solid fa-building me-1"></i> DGD — UI/UX Design</div>
+    <div class="profile-skills-label">Offers</div>
+    <div class="profile-skills">
+      <span class="skill-badge">Figma</span>
+      <span class="skill-badge">HTML/CSS</span>
+      <span class="skill-badge">Bootstrap</span>
+    </div>
+    <div class="profile-skills-label">Wants to Learn</div>
+    <div class="profile-skills">
+      <span class="skill-badge purple">JavaScript</span>
+      <span class="skill-badge purple">PHP</span>
+    </div>
+    <button class="btn btn-outline w-100 mt-3" data-bs-toggle="modal" data-bs-target="#profileModal"
+      data-name="Maham Sheikh" data-dept="DGD — UI/UX Design"
+      data-offers="Figma, HTML/CSS, Bootstrap"
+      data-wants="JavaScript, PHP"
+      data-bio="Maham creates pixel-perfect UI mockups and has a strong eye for design systems. She wants to add interactivity to her work through JS and server-side logic.">
+      View Profile
+    </button>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 profile-item" data-skills="csharp mysql php" data-name="bilal ahmed">
+  <div class="profile-card card-lift">
+    <img src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?auto=format&fit=crop&w=150&h=150&q=80" alt="Bilal Ahmed" class="profile-avatar-img" style="border-color: #854F0B;" />
+    <div class="profile-name">Bilal Ahmed</div>
+    <div class="profile-dept"><i class="fa-solid fa-building me-1"></i> DIT — Systems Track</div>
+    <div class="profile-skills-label">Offers</div>
+    <div class="profile-skills">
+      <span class="skill-badge">C#</span>
+      <span class="skill-badge">MySQL</span>
+      <span class="skill-badge">PHP</span>
+    </div>
+    <div class="profile-skills-label">Wants to Learn</div>
+    <div class="profile-skills">
+      <span class="skill-badge purple">Figma</span>
+      <span class="skill-badge purple">Bootstrap</span>
+    </div>
+    <button class="btn btn-outline w-100 mt-3" data-bs-toggle="modal" data-bs-target="#profileModal"
+      data-name="Bilal Ahmed" data-dept="DIT — Systems Track"
+      data-offers="C#, MySQL, PHP"
+      data-wants="Figma, Bootstrap"
+      data-bio="Bilal has developed several full-stack PHP applications with MySQL backends. He now wants to present his work professionally with better UI design skills.">
+      View Profile
+    </button>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 profile-item" data-skills="python javascript" data-name="nadia malik">
+  <div class="profile-card card-lift">
+    <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=150&h=150&q=80" alt="Nadia Malik" class="profile-avatar-img" style="border-color: var(--purple);" />
+    <div class="profile-name">Nadia Malik</div>
+    <div class="profile-dept"><i class="fa-solid fa-building me-1"></i> SECP — Data Track</div>
+    <div class="profile-skills-label">Offers</div>
+    <div class="profile-skills">
+      <span class="skill-badge">Python</span>
+      <span class="skill-badge">JavaScript</span>
+    </div>
+    <div class="profile-skills-label">Wants to Learn</div>
+    <div class="profile-skills">
+      <span class="skill-badge purple">Figma</span>
+      <span class="skill-badge purple">HTML/CSS</span>
+    </div>
+    <button class="btn btn-outline w-100 mt-3" data-bs-toggle="modal" data-bs-target="#profileModal"
+      data-name="Nadia Malik" data-dept="SECP — Data Track"
+      data-offers="Python, JavaScript"
+      data-wants="Figma, HTML/CSS"
+      data-bio="Nadia works with data pipelines using Python and has built small automation scripts. She's looking to combine her skills with design to create data visualization dashboards.">
+      View Profile
+    </button>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 profile-item" data-skills="html-css bootstrap figma" data-name="omar farooq">
+  <div class="profile-card card-lift">
+    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80" alt="Omar Farooq" class="profile-avatar-img" style="border-color: #185FA5;" />
+    <div class="profile-name">Omar Farooq</div>
+    <div class="profile-dept"><i class="fa-solid fa-building me-1"></i> DGD — Creative Media</div>
+    <div class="profile-skills-label">Offers</div>
+    <div class="profile-skills">
+      <span class="skill-badge">HTML/CSS</span>
+      <span class="skill-badge">Bootstrap</span>
+      <span class="skill-badge">Figma</span>
+    </div>
+    <div class="profile-skills-label">Wants to Learn</div>
+    <div class="profile-skills">
+      <span class="skill-badge purple">Python</span>
+      <span class="skill-badge purple">MySQL</span>
+    </div>
+    <button class="btn btn-outline w-100 mt-3" data-bs-toggle="modal" data-bs-target="#profileModal"
+      data-name="Omar Farooq" data-dept="DGD — Creative Media"
+      data-offers="HTML/CSS, Bootstrap, Figma"
+      data-wants="Python, MySQL"
+      data-bio="Omar combines creative instincts with technical HTML/CSS skills. He builds landing pages that look great on every device and wants to learn the data side of web development.">
+      View Profile
+    </button>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 profile-item" data-skills="javascript mysql" data-name="fatima noor">
+  <div class="profile-card card-lift">
+    <img src="https://images.unsplash.com/photo-1594744803329-e58b31de215f?auto=format&fit=crop&w=150&h=150&q=80" alt="Fatima Noor" class="profile-avatar-img" style="border-color: #854F0B;" />
+    <div class="profile-name">Fatima Noor</div>
+    <div class="profile-dept"><i class="fa-solid fa-building me-1"></i> SECP — Full Stack</div>
+    <div class="profile-skills-label">Offers</div>
+    <div class="profile-skills">
+      <span class="skill-badge">JavaScript</span>
+      <span class="skill-badge">MySQL</span>
+    </div>
+    <div class="profile-skills-label">Wants to Learn</div>
+    <div class="profile-skills">
+      <span class="skill-badge purple">C#</span>
+      <span class="skill-badge purple">PHP</span>
+    </div>
+    <button class="btn btn-outline w-100 mt-3" data-bs-toggle="modal" data-bs-target="#profileModal"
+      data-name="Fatima Noor" data-dept="SECP — Full Stack"
+      data-offers="JavaScript, MySQL"
+      data-wants="C#, PHP"
+      data-bio="Fatima bridges frontend and database — she's comfortable in JS and has solid SQL query skills. She wants to round out her stack by learning server-side languages.">
+      View Profile
+    </button>
+  </div>
+</div>
+
+<div class="col-md-6 col-lg-4 profile-item" data-skills="php python csharp" data-name="hassan qureshi">
+  <div class="profile-card card-lift">
+    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&h=150&q=80" alt="Hassan Qureshi" class="profile-avatar-img" style="border-color: var(--blue);" />
+    <div class="profile-name">Hassan Qureshi</div>
+    <div class="profile-dept"><i class="fa-solid fa-building me-1"></i> DIT — Backend Track</div>
+    <div class="profile-skills-label">Offers</div>
+    <div class="profile-skills">
+      <span class="skill-badge">PHP</span>
+      <span class="skill-badge">Python</span>
+      <span class="skill-badge">C#</span>
+    </div>
+    <div class="profile-skills-label">Wants to Learn</div>
+    <div class="profile-skills">
+      <span class="skill-badge purple">JavaScript</span>
+      <span class="skill-badge purple">Figma</span>
+    </div>
+    <button class="btn btn-outline w-100 mt-3" data-bs-toggle="modal" data-bs-target="#profileModal"
+      data-name="Hassan Qureshi" data-dept="DIT — Backend Track"
+      data-offers="PHP, Python, C#"
+      data-wants="JavaScript, Figma"
+      data-bio="Hassan is a well-rounded backend developer across multiple languages. He wants to bring his server-side logic to life with modern JavaScript and design thinking.">
+      View Profile
+    </button>
+  </div>
+</div>
+      <!-- No results message -->
+      <div class="no-results" id="no-results">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <p>No students found matching your search.</p>
+        <button class="btn btn-outline mt-3" id="reset-filter">Reset Filters</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROFILE DETAIL MODAL -->
+  <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-name">Student Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:var(--gap-sm);" id="modal-dept"></p>
+          <p style="font-size:0.9rem;color:var(--gray-300);margin-bottom:var(--gap-md);" id="modal-bio"></p>
+          <div style="font-family:var(--font-heading);font-size:0.65rem;color:var(--blue);letter-spacing:0.12em;margin-bottom:8px;">OFFERS</div>
+          <div id="modal-offers" class="d-flex flex-wrap gap-2 mb-3"></div>
+          <div style="font-family:var(--font-heading);font-size:0.65rem;color:var(--purple-light);letter-spacing:0.12em;margin-bottom:8px;">WANTS TO LEARN</div>
+          <div id="modal-wants" class="d-flex flex-wrap gap-2"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" data-bs-dismiss="modal">Close</button>
+          <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-handshake me-1"></i> Send Swap Request</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4"><div class="footer-brand">LEARN<span>NOVA</span></div><p class="footer-tagline">Transforming Students Into Collaborative Learners</p></div>
+        <div class="col-lg-2 col-6"><div class="footer-heading">Pages</div><ul class="footer-links"><li><a href="index.html" class="footer-link">Home</a></li><li><a href="how-it-works.html" class="footer-link">How It Works</a></li><li><a href="features.html" class="footer-link">Features</a></li><li><a href="profiles.html" class="footer-link">Students</a></li></ul></div>
+        <div class="col-lg-2 col-6"><div class="footer-heading">More</div><ul class="footer-links"><li><a href="match-demo.html" class="footer-link">Match Demo</a></li><li><a href="about.html" class="footer-link">About</a></li><li><a href="contact.html" class="footer-link">Contact</a></li></ul></div>
+        <div class="col-lg-4"><div class="footer-heading">Tech Stack</div><div style="display:flex;flex-wrap:wrap;gap:8px;"><span class="skill-badge">HTML5</span><span class="skill-badge">Bootstrap 5</span><span class="skill-badge">jQuery</span></div></div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 LearnNova — Team NovaSync. Aptech Vision 2026.</p>
+        <p class="footer-copy">Eisha Fatima &amp; Ibrahim Kamran</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top" title="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/profiles.js"></script>
+
+  <script>
+  $(document).ready(function(){
+    // Preloader
+    setTimeout(function(){
+      $('#preloader').addClass('hide');
+      setTimeout(function(){ $('#preloader').remove(); }, 400);
+    }, 700);
+
+    // LocalStorage se registered students load karo
+    loadStoredProfiles();
+
+    // Admin bar inject karo (agar koi registered student hai)
+    injectAdminBar();
+
+    // Modal populate
+    $('#profileModal').on('show.bs.modal', function(e){
+      var btn = $(e.relatedTarget);
+      $('#modal-name').text(btn.data('name'));
+      $('#modal-dept').text(btn.data('dept'));
+      $('#modal-bio').text(btn.data('bio'));
+
+      // Offers badges
+      $('#modal-offers').empty();
+      btn.data('offers').split(',').forEach(function(s){
+        $('#modal-offers').append('<span class="skill-badge">'+s.trim()+'</span>');
+      });
+      // Wants badges
+      $('#modal-wants').empty();
+      btn.data('wants').split(',').forEach(function(s){
+        $('#modal-wants').append('<span class="skill-badge purple">'+s.trim()+'</span>');
+      });
+    });
+  });
+  </script>
+
+</body>
+</html>

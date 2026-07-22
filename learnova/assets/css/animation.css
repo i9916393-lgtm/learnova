@@ -1,0 +1,204 @@
+/* ============================================
+   LEARNOVA - Animations Stylesheet
+   Team: NovaSync | Eisha Fatima & Ibrahim Kamran
+   animations.css → assets/css/animations.css
+   ============================================ */
+
+/* ---------- Typed cursor blink ---------- */
+.typed-cursor {
+  color: var(--blue);
+  font-weight: 300;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ---------- Floating up-down ---------- */
+.float {
+  animation: floatUpDown 4s ease-in-out infinite;
+}
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0);    }
+  50%       { transform: translateY(-14px); }
+}
+
+/* ---------- Pulse glow ring ---------- */
+.pulse-ring {
+  animation: pulseRing 2.5s ease-out infinite;
+}
+@keyframes pulseRing {
+  0%   { box-shadow: 0 0 0 0 rgba(59,139,212,0.35); }
+  70%  { box-shadow: 0 0 0 18px rgba(59,139,212,0);  }
+  100% { box-shadow: 0 0 0 0 rgba(59,139,212,0);     }
+}
+
+/* ---------- Fade in up ---------- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+.fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* ---------- Fade in ---------- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* ---------- Slide in from left ---------- */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+.slide-in-left {
+  animation: slideInLeft 0.6s ease forwards;
+}
+
+/* ---------- Slide in from right ---------- */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+.slide-in-right {
+  animation: slideInRight 0.6s ease forwards;
+}
+
+/* ---------- Scale in ---------- */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+.scale-in {
+  animation: scaleIn 0.5s ease forwards;
+}
+
+/* ---------- Gradient text shimmer ---------- */
+.gradient-text {
+  background: linear-gradient(90deg, var(--blue), var(--purple), var(--blue));
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 0%   center; }
+  100% { background-position: 200% center; }
+}
+
+/* ---------- Orbit rotation (hero circle) ---------- */
+.orbit {
+  animation: orbit 8s linear infinite;
+  transform-origin: center;
+}
+@keyframes orbit {
+  from { transform: rotate(0deg)   translateX(130px) rotate(0deg);   }
+  to   { transform: rotate(360deg) translateX(130px) rotate(-360deg);}
+}
+
+/* ---------- Glow border on hover ---------- */
+.glow-on-hover {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.glow-on-hover:hover {
+  box-shadow: 0 0 20px rgba(59,139,212,0.3);
+  border-color: rgba(59,139,212,0.5) !important;
+}
+
+/* ---------- Card lift ---------- */
+.card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+/* ---------- Step connector line (how-it-works) ---------- */
+.step-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  opacity: 0.4;
+  font-size: 1.4rem;
+}
+
+/* ---------- Matching animation (match-demo) ---------- */
+@keyframes matchPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1);    }
+  50%       { opacity: 1;   transform: scale(1.15); }
+}
+.match-pulse {
+  animation: matchPulse 1.4s ease-in-out infinite;
+}
+
+/* ---------- Loading spinner ---------- */
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(59,139,212,0.2);
+  border-top-color: var(--blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Page preloader ---------- */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--navy);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  transition: opacity 0.4s ease;
+}
+#preloader.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+#preloader .pre-logo {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: 0.1em;
+}
+#preloader .pre-logo span {
+  color: var(--blue);
+}
+
+/* ---------- AOS custom overrides ---------- */
+[data-aos="fade-up"] {
+  transform: translateY(24px);
+}
+[data-aos="zoom-in"] {
+  transform: scale(0.92);
+}
+
+/* ---------- Delay helpers ---------- */
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+/* ---------- Stagger children ---------- */
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }

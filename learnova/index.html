@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LearnNova — Transforming Students Into Collaborative Learners</title>
+  <meta name="description" content="LearnNova is a smart peer-to-peer skill exchange platform that bridges the gap between potential and execution. Team NovaSync — Aptech Vision 2026." />
+
+  <!-- Bootstrap 5 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
+  <!-- LearnNova Styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+
+  <style>
+    /* Scroll-to-top button */
+    #scroll-top {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      width: 42px;
+      height: 42px;
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    #scroll-top:hover { background: var(--blue-light); }
+  </style>
+</head>
+<body>
+
+  <!-- =============================================
+       NAVBAR
+       ============================================= -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container nav-container">
+      
+      <a href="index.html" class="navbar-brand">
+        LEARN<span>NOVA</span>
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#learnNovaNavbar">
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="learnNovaNavbar">
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
+          <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="how-it-works.html" class="nav-link">Workflow</a></li>
+          <li class="nav-item"><a href="features.html" class="nav-link">Features</a></li>
+          <li class="nav-item"><a href="profiles.html" class="nav-link">Students</a></li>
+          <li class="nav-item"><a href="match-demo.html" class="nav-link">Demo</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          
+          <li class="nav-item ms-lg-3"><a href="login.html" class="nav-link">Login</a></li>
+          <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
+            <a href="signup.html" class="btn btn-primary navbar-btn-original">
+              <i class="fa-solid fa-user-plus me-1"></i>SignUp
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+  <div style="margin-top: 85px;"></div>
+  <!-- END NAVBAR -->
+
+
+  <!-- =============================================
+       HERO SECTION
+       ============================================= -->
+  <section class="hero" id="home">
+
+    <!-- Animated particle background -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Glow effects -->
+    <div class="hero-bg">
+      <div class="hero-glow-1"></div>
+      <div class="hero-glow-2"></div>
+    </div>
+
+    <div class="container hero-content">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+
+          <!-- Top badge -->
+          <div class="hero-badge" data-aos="fade-down" data-aos-delay="100">
+            <i class="fa-solid fa-bolt"></i>
+            APTECH VISION 2026 &nbsp;·&nbsp; TEAM NOVASYNC
+          </div>
+
+          <!-- Main heading -->
+          <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
+            LEARN
+            <span class="highlight">NOVA</span>
+          </h1>
+
+          <!-- Typed subtitle -->
+          <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300">
+            <span id="typed-text"></span>
+            <span class="typed-cursor">|</span>
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="hero-actions" data-aos="fade-up" data-aos-delay="400">
+            <a href="match-demo.html" class="btn btn-primary">
+              <i class="fa-solid fa-bolt"></i> Try Skill Match
+            </a>
+            <a href="how-it-works.html" class="btn btn-outline">
+              <i class="fa-solid fa-play"></i> How It Works
+            </a>
+          </div>
+
+          <!-- Team Card -->
+          <div class="hero-team-card" data-aos="fade-up" data-aos-delay="500">
+            <div>
+              <div class="hero-team-label">Team</div>
+              <div class="hero-team-name">NOVASYNC</div>
+            </div>
+            <div class="hero-team-divider"></div>
+            <div>
+              <div class="hero-team-label">Developers</div>
+              <div class="hero-team-name">EISHA FATIMA &amp; IBRAHIM KAMRAN</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right side decorative element -->
+       <div class="col-lg-4 d-none d-lg-flex justify-content-center" data-aos="fade-left" data-aos-delay="300">
+  <div style="position: relative; width: 100%; max-width: 340px;">
+    <div style="position: absolute; inset: -15px; background: radial-gradient(circle, rgba(59,139,212,0.15) 0%, transparent 70%); z-index: 0;"></div>
+    
+    <div style="position: relative; z-index: 1; border-radius: var(--radius-lg); background: linear-gradient(145deg, var(--navy-light), rgba(10,25,47,0.7)); border: 1px solid rgba(59,139,212,0.25); padding: var(--gap-md); box-shadow: 0 20px 40px rgba(0,0,0,0.4); overflow: hidden;">
+      <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=500&q=80" alt="Professional Learning Interface" class="img-fluid" style="border-radius: var(--radius-md); object-fit: cover; height: 180px; width: 100%; margin-bottom: var(--gap-sm); border: 1px solid rgba(255,255,255,0.05);" />
+      
+      <div class="d-flex align-items-center justify-content-between mt-2">
+        <span style="font-family: var(--font-heading); font-size: 0.7rem; font-weight: 700; color: var(--purple); letter-spacing: 0.1em; text-transform: uppercase;">Ecosystem Live</span>
+        <div class="d-flex align-items-center gap-1">
+          <span style="width: 7px; height: 7px; background: #5DCAA5; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #5DCAA5;"></span>
+          <span style="font-size: 0.72rem; color: var(--gray-300);">Active Sync</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+    </div>
+  </section>
+  <!-- END HERO -->
+
+
+  <!-- =============================================
+       STATS / NUMBERS SECTION
+       ============================================= -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="row text-center g-4">
+
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="stat-item">
+            <div class="stat-number">
+              <span class="counter" data-target="85" data-suffix="%">0%</span>
+            </div>
+            <div class="stat-label">Skill Mastery Rate</div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="stat-item">
+            <div class="stat-number">
+              <span class="counter" data-target="75" data-suffix="%">0%</span>
+            </div>
+            <div class="stat-label">Campus Engagement</div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="stat-item">
+            <div class="stat-number">
+              <span class="counter" data-target="100" data-suffix="%">0%</span>
+            </div>
+            <div class="stat-label">Learning Cost Reduction</div>
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
+          <div class="stat-item">
+            <div class="stat-number">
+              <span class="counter" data-target="500" data-suffix="+">0+</span>
+            </div>
+            <div class="stat-label">Students Connected</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- END STATS -->
+
+
+  <!-- =============================================
+       THE PROBLEM — SILO EFFECT
+       ============================================= -->
+  <section class="section" id="problem">
+    <div class="container">
+
+      <div class="section-header text-center" data-aos="fade-up">
+        <div class="section-badge">The Problem</div>
+        <h2 class="section-title">The <span>Silo</span> Effect</h2>
+        <p class="section-subtitle mx-auto">
+          Talent is locked within separate departments. A Designer doesn't know the Coder sitting just two rooms away.
+        </p>
+      </div>
+
+      <div class="row g-4">
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100">
+            <div class="card-icon">
+              <i class="fa-solid fa-lock"></i>
+            </div>
+            <div class="card-title">Knowledge Blocks</div>
+            <p class="card-text">
+              Skills remain untapped within silos. Students with valuable expertise have no way to share or discover complementary talent on campus.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100">
+            <div class="card-icon">
+              <i class="fa-solid fa-dollar-sign"></i>
+            </div>
+            <div class="card-title">External Costs</div>
+            <p class="card-text">
+              Students pay for courses and training on skills that their classmates already have — and would willingly share for free.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card h-100">
+            <div class="card-icon">
+              <i class="fa-solid fa-link-slash"></i>
+            </div>
+            <div class="card-title">Zero Synergy</div>
+            <p class="card-text">
+              Innovation dies in isolation. Without collaboration across departments, the campus ecosystem fails to produce real-world ready graduates.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- END PROBLEM -->
+
+
+  <!-- =============================================
+       THE SOLUTION — LEARNOVA ECOSYSTEM
+       ============================================= -->
+  <section class="section" id="solution" style="background: var(--navy-light);">
+    <div class="container">
+
+      <div class="row align-items-center g-5">
+
+        <div class="col-lg-6" data-aos="fade-right">
+          <div class="section-badge">The Solution</div>
+          <h2 class="section-title mt-2">
+            Breaking<br />The <span>Silos</span>
+          </h2>
+          <p class="mb-4">
+            LearnNova is a smart peer-to-peer exchange platform that <strong style="color:var(--white)">bridges the gap</strong> between potential and execution.
+          </p>
+          <p class="mb-4">
+            We connect students based on complementary skills, creating a unified campus network where a C# developer meets a Bootstrap expert — and both grow together.
+          </p>
+
+          <!-- Quote block -->
+          <div style="
+            border-left: 2px solid var(--blue);
+            padding: 14px 20px;
+            background: rgba(59,139,212,0.06);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin-top: var(--gap-md);
+          ">
+            <p style="color:var(--gray-100);font-style:italic;margin:0;">
+              "Turning individual learners into a powerful collaborative workforce."
+            </p>
+          </div>
+
+          <a href="how-it-works.html" class="btn btn-primary mt-4">
+            See How It Works <i class="fa-solid fa-arrow-right ms-1"></i>
+          </a>
+        </div>
+
+      <div class="col-lg-6" data-aos="fade-left" data-aos-delay="150">
+  <div style="position: relative; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 15px 35px rgba(0,0,0,0.3);">
+    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Collaborative Student Network" class="img-fluid" style="width: 100%; height: 350px; object-fit: cover;" />
+    <div style="position: absolute; inset: 0; background: linear-gradient(to top, var(--navy-light), transparent); opacity: 0.6;"></div>
+  </div>
+</div>
+
+      </div>
+    </div>
+  </section>
+  <!-- END SOLUTION -->
+
+
+  <!-- =============================================
+       CORE FEATURES — 4 CARDS
+       ============================================= -->
+  <section class="section" id="features">
+    <div class="container">
+
+      <div class="section-header text-center" data-aos="fade-up">
+        <div class="section-badge">Core Features</div>
+        <h2 class="section-title">Core Ecosystem <span>Features</span></h2>
+        <p class="section-subtitle mx-auto">
+          Everything you need to swap, learn, schedule, and showcase — all in one platform.
+        </p>
+      </div>
+
+      <div class="row g-4">
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100 text-center">
+            <div class="card-icon"><i class="fa-solid fa-id-badge"></i></div>
+            <div class="card-title">Skill Badges</div>
+            <p class="card-text">
+              Verified digital certificates awarded after every successful skill swap. Build a credible campus profile.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100 text-center">
+            <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
+            <div class="card-title">Live Chat</div>
+            <p class="card-text">
+              Integrated jQuery-based messaging system. Coordinate swaps and discussions in real time.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="card h-100 text-center">
+            <div class="card-icon"><i class="fa-solid fa-calendar-check"></i></div>
+            <div class="card-title">Swap Scheduler</div>
+            <p class="card-text">
+              Book learning sessions with peer mentors. Choose time slots that fit both schedules.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+          <div class="card h-100 text-center">
+            <div class="card-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <div class="card-title">Portfolio Builder</div>
+            <p class="card-text">
+              Showcase collaborative projects. Let your work speak louder than your resume.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-5" data-aos="fade-up">
+        <a href="features.html" class="btn btn-outline">
+          Explore All Features <i class="fa-solid fa-arrow-right ms-1"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  <!-- END FEATURES -->
+
+
+  <!-- =============================================
+       INTELLIGENT MATCHING
+       ============================================= -->
+<section class="section" style="background: var(--navy-light); padding: 80px 0;">
+    <div class="container">
+      <div class="row align-items-center g-5">
+
+        <div class="col-lg-6" data-aos="fade-right">
+          <div style="
+            background: var(--navy-mid);
+            border: 1px solid rgba(59,139,212,0.2);
+            border-radius: var(--radius-xl);
+            padding: var(--gap-lg);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            position: relative;
+          ">
+            
+            <div style="
+              font-family: var(--font-heading);
+              font-size: 0.65rem;
+              letter-spacing: 0.15em;
+              color: var(--blue);
+              margin-bottom: var(--gap-md);
+              text-transform: uppercase;
+              font-weight: 700;
+              text-align: center;
+            ">
+              <i class="fa-solid fa-circle-dot fa-flashing me-1" style="color: #5DCAA5;"></i> Live Match Instance
+            </div>
+
+            <div style="
+              background: rgba(59,139,212,0.08);
+              border: 1px solid rgba(59,139,212,0.25);
+              border-radius: var(--radius-md);
+              padding: 16px;
+              margin-bottom: 12px;
+              display: flex;
+              align-items: center;
+              gap: 16px;
+              text-align: left;
+              transition: transform var(--transition);
+            ">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80" 
+                   style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--blue); object-fit: cover; flex-shrink: 0;" 
+                   alt="Student A Avatar"/>
+              <div>
+                <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 600; color: var(--white); margin-bottom: 4px;">
+                  Eisha Fatima <span style="font-size: 0.7rem; color: var(--gray-400); font-weight: 400; margin-left: 5px;">(Software Eng.)</span>
+                </div>
+                <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                  <span class="skill-badge" style="font-size: 0.65rem; padding: 2px 8px; background: rgba(59,139,212,0.2); color: var(--blue);">Knows: C#</span>
+                  <span class="skill-badge purple" style="font-size: 0.65rem; padding: 2px 8px; background: rgba(123,92,240,0.2); color: var(--purple);">Wants: Bootstrap</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center my-3 position-relative" style="z-index: 2;">
+              <div style="
+                color: var(--blue);
+                font-size: 1.3rem;
+                background: var(--navy-mid);
+                display: inline-block;
+                padding: 0 10px;
+                position: relative;
+              ">
+                <i class="fa-solid fa-arrows-up-down"></i>
+              </div>
+              <div style="
+                font-family: var(--font-heading);
+                font-size: 0.62rem;
+                font-weight: 700;
+                color: #5DCAA5;
+                letter-spacing: 0.12em;
+                margin-top: 4px;
+                text-transform: uppercase;
+              ">
+                100% Interest Synergy Detected
+              </div>
+            </div>
+
+            <div style="
+              background: rgba(123,92,240,0.08);
+              border: 1px solid rgba(123,92,240,0.25);
+              border-radius: var(--radius-md);
+              padding: 16px;
+              display: flex;
+              align-items: center;
+              gap: 16px;
+              text-align: left;
+              transition: transform var(--transition);
+            ">
+              <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&h=150&q=80" 
+                   style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--purple); object-fit: cover; flex-shrink: 0;" 
+                   alt="Student B Avatar"/>
+              <div>
+                <div style="font-family: var(--font-heading); font-size: 0.85rem; font-weight: 600; color: var(--white); margin-bottom: 4px;">
+                  Ibrahim Kamran <span style="font-size: 0.7rem; color: var(--gray-400); font-weight: 400; margin-left: 5px;">(Media & Design)</span>
+                </div>
+                <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                  <span class="skill-badge purple" style="font-size: 0.65rem; padding: 2px 8px; background: rgba(123,92,240,0.2); color: var(--purple);">Knows: Bootstrap</span>
+                  <span class="skill-badge" style="font-size: 0.65rem; padding: 2px 8px; background: rgba(59,139,212,0.2); color: var(--blue);">Wants: C#</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-lg-6" data-aos="fade-left" data-aos-delay="150">
+          <div class="section-badge">Intelligent Matching</div>
+          <h2 class="section-title mt-2" style="font-size: 2.25rem; font-weight: 700; color: var(--white);">
+            The Pairing <span style="color: var(--blue);">Algorithm</span>
+          </h2>
+          <p class="mb-4 style-text" style="color: var(--gray-300); line-height: 1.6;">
+            Using optimized graph-matching architecture, our platform maps individual student requirements out of isolation. It automatically bridges cross-department profiles, safely creating mutually beneficial dependencies.
+          </p>
+
+          <ul style="list-style: none; padding: 0; margin-bottom: 28px;">
+            <li style="display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start;">
+              <div style="
+                width: 22px; 
+                height: 22px; 
+                background: rgba(59,139,212,0.15); 
+                border-radius: 50%; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                flex-shrink: 0; 
+                margin-top: 2px;
+              ">
+                <i class="fa-solid fa-check" style="color: var(--blue); font-size: 0.75rem;"></i>
+              </div>
+              <span style="color: var(--gray-200); font-size: 0.95rem;">Cross-references structured supply (Offered Skills) vs demand (Wanted Skills).</span>
+            </li>
+            
+            <li style="display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start;">
+              <div style="
+                width: 22px; 
+                height: 22px; 
+                background: rgba(59,139,212,0.15); 
+                border-radius: 50%; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                flex-shrink: 0; 
+                margin-top: 2px;
+              ">
+                <i class="fa-solid fa-check" style="color: var(--blue); font-size: 0.75rem;"></i>
+              </div>
+              <span style="color: var(--gray-200); font-size: 0.95rem;">Filters scheduling nodes based on common target milestones and weekly availability.</span>
+            </li>
+
+            <li style="display: flex; gap: 14px; margin-bottom: 18px; align-items: flex-start;">
+              <div style="
+                width: 22px; 
+                height: 22px; 
+                background: rgba(59,139,212,0.15); 
+                border-radius: 50%; 
+                display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                flex-shrink: 0; 
+                margin-top: 2px;
+              ">
+                <i class="fa-solid fa-check" style="color: var(--blue); font-size: 0.75rem;"></i>
+              </div>
+              <span style="color: var(--gray-200); font-size: 0.95rem;">Ensures high-integrity pairing via 100% symmetric skill-interest loops.</span>
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center gap-3">
+            <a href="match-demo.html" class="btn btn-primary" style="padding: 10px 24px;">
+              <i class="fa-solid fa-bolt me-1"></i> Launch Ecosystem Demo
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- END MATCHING -->
+
+
+  <!-- =============================================
+       PROGRESS BARS — QUANTIFIED SYNERGY
+       ============================================= -->
+  <section class="section" id="results">
+    <div class="container">
+
+      <div class="row align-items-center g-5">
+
+        <div class="col-lg-5" data-aos="fade-right">
+          <div class="section-badge">Results</div>
+          <h2 class="section-title mt-2">Quantified <span>Synergy</span></h2>
+          <p>
+            Our platform delivers measurable outcomes — empowering students to become self-sufficient contributors in the real world.
+          </p>
+          <blockquote style="color:var(--blue);font-style:italic;margin-top:var(--gap-md);">
+            "Empowering students to become self-sufficient contributors."
+          </blockquote>
+        </div>
+
+        <div class="col-lg-7" data-aos="fade-left" data-aos-delay="150">
+
+          <div class="progress-item">
+            <div class="progress-label">
+              <span>Skill Mastery Rate</span>
+              <span>85%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" data-width="85"></div>
+            </div>
+          </div>
+
+          <div class="progress-item">
+            <div class="progress-label">
+              <span>Campus Engagement</span>
+              <span>75%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" data-width="75"></div>
+            </div>
+          </div>
+
+          <div class="progress-item">
+            <div class="progress-label">
+              <span>Learning Cost Reduction</span>
+              <span>100%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" data-width="100"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END RESULTS -->
+
+
+  <!-- =============================================
+       CTA SECTION
+       ============================================= -->
+  <section class="section" style="background: var(--navy-light);">
+    <div class="container text-center" data-aos="zoom-in">
+
+      <div style="
+        max-width: 600px;
+        margin: 0 auto;
+        padding: var(--gap-xl) var(--gap-md);
+        border: 1px solid rgba(59,139,212,0.2);
+        border-radius: var(--radius-xl);
+        background: rgba(59,139,212,0.04);
+        position: relative;
+      ">
+        <div class="section-badge mb-3">Join Now</div>
+        <h2 class="section-title">Ready to Break<br />Your <span>Silo</span>?</h2>
+        <p class="mt-3 mb-4 mx-auto" style="max-width:420px;">
+          Register your profile, list your skills, and start connecting with peers who complement your abilities.
+        </p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+          <a href="signup.html" class="btn btn-primary">
+            <i class="fa-solid fa-user-plus"></i> Register Now
+          </a>
+          <a href="profiles.html" class="btn btn-outline">
+            Browse Students
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- END CTA -->
+
+
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- Brand -->
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-brand">LEARN<span>NOVA</span></div>
+          <p class="footer-tagline">Transforming Students Into Collaborative Learners</p>
+          <p style="font-size:0.85rem;color:var(--gray-500);">
+            A smart peer-to-peer skill exchange platform for Aptech students. Team NovaSync — Aptech Vision 2026.
+          </p>
+        </div>
+
+        <!-- Pages -->
+        <div class="col-lg-2 col-md-3 col-6">
+          <div class="footer-heading">Pages</div>
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="how-it-works.html" class="footer-link">How It Works</a></li>
+            <li><a href="features.html" class="footer-link">Features</a></li>
+            <li><a href="profiles.html" class="footer-link">Students</a></li>
+            <li><a href="match-demo.html" class="footer-link">Match Demo</a></li>
+          </ul>
+        </div>
+
+        <!-- More -->
+        <div class="col-lg-2 col-md-3 col-6">
+          <div class="footer-heading">More</div>
+          <ul class="footer-links">
+            <li><a href="about.html" class="footer-link">About</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+            <li><a href="contact.html" class="footer-link">Register</a></li>
+          </ul>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-heading">Tech Stack</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="skill-badge">HTML5</span>
+            <span class="skill-badge">CSS3</span>
+            <span class="skill-badge">Bootstrap 5</span>
+            <span class="skill-badge">JavaScript</span>
+            <span class="skill-badge">jQuery</span>
+            <span class="skill-badge">Chart.js</span>
+            <span class="skill-badge">AOS.js</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom bar -->
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          &copy; 2026 LearnNova — Team NovaSync. Built for Aptech Vision 2026.
+        </p>
+        <p class="footer-copy">
+          Eisha Fatima &amp; Ibrahim Kamran
+        </p>
+      </div>
+
+    </div>
+  </footer>
+  <!-- END FOOTER -->
+
+
+  <!-- Scroll to top button -->
+  <button id="scroll-top" title="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+
+  <!-- =============================================
+       SCRIPTS (load order matters!)
+       ============================================= -->
+
+  <!-- jQuery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- AOS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <!-- LearnNova Main JS -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>

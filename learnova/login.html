@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — LearnNova</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+
+  <style>
+    .auth-box {
+      background: var(--navy-mid);
+      border: 1px solid rgba(59, 139, 212, 0.3);
+      border-radius: var(--radius-lg);
+      padding: var(--gap-lg);
+      max-width: 450px;
+      margin: 80px auto;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    }
+    .form-control-custom {
+      background: var(--navy-light) !important;
+      border: 1px solid rgba(59, 139, 212, 0.3) !important;
+      color: var(--white) !important;
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+    }
+    .form-control-custom:focus {
+      border-color: var(--blue) !important;
+      box-shadow: 0 0 10px rgba(59, 139, 212, 0.3) !important;
+    }
+    .form-control-custom::placeholder {
+      color: #a0aec0 !important;
+    }
+    .alert-custom {
+      display: none;
+      padding: 10px;
+      font-size: 0.85rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container nav-container">
+      
+      <a href="index.html" class="navbar-brand">
+        LEARN<span>NOVA</span>
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#learnNovaNavbar">
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="learnNovaNavbar">
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
+          <li class="nav-item"><a href="index.html" class="nav-link ">Home</a></li>
+          <li class="nav-item"><a href="how-it-works.html" class="nav-link">Workflow</a></li>
+          <li class="nav-item"><a href="features.html" class="nav-link">Features</a></li>
+          <li class="nav-item"><a href="profiles.html" class="nav-link">Students</a></li>
+          <li class="nav-item"><a href="match-demo.html" class="nav-link">Demo</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
+          
+          <li class="nav-item ms-lg-3"><a href="login.html" class="nav-link active">Login</a></li>
+          <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
+            <a href="signup.html" class="btn btn-primary navbar-btn-original">
+              <i class="fa-solid fa-user-plus me-1"></i>SignUp
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+  <div style="margin-top: 85px;"></div>
+
+  <!-- LOGIN CARD -->
+  <div class="container">
+    <div class="auth-box" data-aos="zoom-in">
+      <div class="text-center mb-4">
+        <div class="section-badge">Security Portal</div>
+        <h3 class="text-white fw-bold mt-2">Welcome <span>Back</span></h3>
+        <p style="color: #cbd5e1; font-size: 0.85rem;">Enter credentials to connect with your peer network.</p>
+      </div>
+
+      <!-- Status Alert Boxes -->
+      <div id="login-alert-error" class="alert alert-danger alert-custom" role="alert"></div>
+      <div id="login-alert-success" class="alert alert-success alert-custom" role="alert"></div>
+
+      <form id="login-auth-form">
+        <div class="mb-3">
+          <label class="form-label text-white small fw-bold">Email Address</label>
+          <input type="email" class="form-control form-control-custom" id="login-email" placeholder="zohaibtahir754@gmail.com" required />
+        </div>
+        <div class="mb-4">
+          <label class="form-label text-white small fw-bold">Password</label>
+          <input type="password" class="form-control form-control-custom" id="login-password" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn btn-primary w-100 py-2 fw-bold" id="login-btn">
+          <i class="fa-solid fa-right-to-bracket me-2"></i> Authenticate
+        </button>
+      </form>
+
+      <div class="text-center mt-4">
+        <p style="color: #cbd5e1; font-size: 0.85rem; mb-0;" >
+          Don't have an account? <a href="signup.html" style="color: var(--blue-light); text-decoration: none;" class="fw-bold">Register Hub</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer mt-5">
+    <div class="container text-center">
+      <p class="text-white opacity-50 small mb-0">&copy; 2026 LearnNova — Team NovaSync. Aptech Vision 2026.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <!-- Core Authentication Handler Script -->
+  <script>
+    $(document).ready(function() {
+      if(typeof AOS !== 'undefined') {
+        AOS.init({ duration: 600, once: true });
+      }
+
+      $('#login-auth-form').on('submit', function(e) {
+        e.preventDefault(); // Forms reload behavior blocked
+
+        var emailInput = $('#login-email').val().trim().toLowerCase();
+        var passwordInput = $('#login-password').val().trim();
+
+        // Target errors and reset feedback boxes
+        $('#login-alert-error').hide().text('');
+        $('#login-alert-success').hide().text('');
+
+        // Fetch users array string from LocalStorage
+        var registeredData = localStorage.getItem('learnova_users');
+        var usersList = registeredData ? JSON.parse(registeredData) : [];
+
+        // Check matching data credentials
+        var userFound = usersList.find(function(user) {
+          return user.email.toLowerCase() === emailInput && user.password === passwordInput;
+        });
+
+        if (userFound) {
+          // Success Response State Trigger
+          $('#login-alert-success').text("Authentication verified! Redirecting to dashboard...").fadeIn(200);
+          $('#login-btn').prop('disabled', true).text('Loading Cluster...');
+          
+          // Save active session status indicator
+          localStorage.setItem('learnova_active_session', JSON.stringify({
+            name: userFound.name,
+            email: userFound.email,
+            loginTime: new Date().getTime()
+          }));
+
+          setTimeout(function() {
+            window.location.href = "index.html"; // Dynamic routing redirection targets home
+          }, 1500);
+
+        } else {
+          // Failure Response state feedback
+          $('#login-alert-error').text("Invalid email mapping or password match mismatch. Please retry.").fadeIn(200);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

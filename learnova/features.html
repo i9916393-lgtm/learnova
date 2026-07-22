@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features — LearnNova</title>
+  <meta name="description" content="Explore LearnNova's core features: Skill Badges, Live Chat, Swap Scheduler, and Portfolio Builder." />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+
+  <style>
+    #scroll-top {
+      display:none;position:fixed;bottom:30px;right:30px;z-index:999;
+      width:42px;height:42px;background:var(--blue);color:var(--white);
+      border:none;border-radius:50%;font-size:1rem;cursor:pointer;
+      transition:background var(--transition);
+    }
+    #scroll-top:hover{background:var(--blue-light);}
+
+    /* Feature detail tabs */
+    .feat-tab-btn {
+      background: var(--navy-light);
+      border: 1px solid rgba(59,139,212,0.15);
+      color: var(--gray-300);
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 0.3s;
+      text-transform: uppercase;
+    }
+    .feat-tab-btn.active,
+    .feat-tab-btn:hover {
+      background: var(--blue);
+      color: var(--white);
+      border-color: var(--blue);
+    }
+    .feat-detail { display: none; }
+    .feat-detail.active { display: block; }
+
+    /* Comparison table */
+    .compare-table { width:100%; border-collapse:separate; border-spacing:0; }
+    .compare-table th {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(59,139,212,0.15);
+    }
+    .compare-table th:first-child { color: var(--gray-300); }
+    .compare-table th:nth-child(2) { color: var(--blue); text-align:center; }
+    .compare-table th:nth-child(3) { color: var(--gray-500); text-align:center; }
+    .compare-table td {
+      padding: 12px 20px;
+      font-size: 0.9rem;
+      color: var(--gray-300);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .compare-table td:nth-child(2),
+    .compare-table td:nth-child(3) { text-align:center; }
+    .compare-table tr:hover td { background: rgba(59,139,212,0.04); }
+    .tick { color: #5DCAA5; font-size:1.1rem; }
+    .cross { color: #E24B4A; font-size:1.1rem; }
+    .feat-card-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--gap-md);
+  border: 1px solid rgba(59,139,212,0.15);
+}
+  </style>
+</head>
+<body>
+
+  <!-- <div id="preloader">
+    <div class="pre-logo">LEARN<span>NOVA</span></div>
+    <div class="spinner"></div>
+  </div> -->
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container nav-container">
+      
+      <a href="index.html" class="navbar-brand">
+        LEARN<span>NOVA</span>
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#learnNovaNavbar">
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="learnNovaNavbar">
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
+          <li class="nav-item"><a href="index.html" class="nav-link ">Home</a></li>
+          <li class="nav-item"><a href="how-it-works.html" class="nav-link">Workflow</a></li>
+          <li class="nav-item"><a href="features.html" class="nav-link active">Features</a></li>
+          <li class="nav-item"><a href="profiles.html" class="nav-link">Students</a></li>
+          <li class="nav-item"><a href="match-demo.html" class="nav-link">Demo</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          
+          <li class="nav-item ms-lg-3"><a href="login.html" class="nav-link">Login</a></li>
+          <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
+            <a href="signup.html" class="btn btn-primary navbar-btn-original">
+              <i class="fa-solid fa-user-plus me-1"></i>SignUp
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+  <div style="margin-top: 85px;"></div>
+
+  <!-- PAGE HERO -->
+<section class="page-header text-center" style="position: relative; background: linear-gradient(135deg, rgba(10, 25, 47, 0.93) 25%, rgba(23, 42, 69, 0.85) 100%), url('https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1600&q=80') no-repeat center center; background-size: cover; padding: 140px 0 70px 0; border-bottom: 1px solid rgba(59, 139, 212, 0.2); overflow: hidden;">
+  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--blue), var(--purple), transparent);"></div>
+  <div class="container" data-aos="fade-down">
+    <h1 class="display-4 fw-bold text-white mb-2">Platform Features</h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="index.html" style="color: var(--blue); text-decoration: none;">Home</a></li>
+        <li class="breadcrumb-item active text-gray-400" aria-current="page">Features</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+  <!-- 4 MAIN FEATURE CARDS -->
+ <div class="row g-4">
+  <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+    <div class="card h-100 text-center">
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80" alt="Skill Badges Ecosystem" class="feat-card-img" />
+      <div class="card-icon"><i class="fa-solid fa-id-badge"></i></div>
+      <div class="card-title">Dynamic Skill Badges</div>
+      <p class="card-text">Earn micro-credentials verified by peers upon successful collaboration syncs.</p>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="150">
+    <div class="card h-100 text-center">
+      <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=400&q=80" alt="Algorithmic Matchmaking" class="feat-card-img" />
+      <div class="card-icon"><i class="fa-solid fa-bezier-curve"></i></div>
+      <div class="card-title">Smart Match Engine</div>
+      <p class="card-text">Advanced matrix logic pairing mutual skill needs instantly without friction.</p>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+    <div class="card h-100 text-center">
+      <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=400&q=80" alt="Realtime Communications" class="feat-card-img" />
+      <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
+      <div class="card-title">Instant Workspace Chat</div>
+      <p class="card-text">Coordinate peer sessions using responsive internal communication threads.</p>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="250">
+    <div class="card h-100 text-center">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&q=80" alt="Data Analytics Visualization" class="feat-card-img" />
+      <div class="card-icon"><i class="fa-solid fa-chart-pie"></i></div>
+      <div class="card-title">Analytics Dashboard</div>
+      <p class="card-text">Track your interactive metrics and performance via customized Chart.js components.</p>
+    </div>
+  </div>
+</div>
+
+      <!-- Feature Detail Panel (jQuery shows/hides) -->
+      <div id="feat-detail-wrap" class="mt-5" style="display:none;" data-aos="fade-up">
+        <div class="card-glow p-4">
+
+          <div class="feat-detail" id="feat-badges">
+            <div class="row align-items-center g-4">
+              <div class="col-md-2 text-center">
+                <div style="font-size:3rem;color:var(--blue);"><i class="fa-solid fa-id-badge"></i></div>
+              </div>
+              <div class="col-md-10">
+                <div class="card-title mb-2">Skill Badges — How They Work</div>
+                <p class="card-text">After both students complete a swap session, the platform generates a verified Skill Badge for each participant. The badge includes the skill name, partner's name, date, and a unique ID. These badges appear on your public profile and can be downloaded for LinkedIn or resumes.</p>
+                <div class="mt-3 d-flex gap-2 flex-wrap">
+                  <span class="skill-badge">Bootstrap Expert</span>
+                  <span class="skill-badge">C# Proficient</span>
+                  <span class="skill-badge purple">MySQL Certified</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feat-detail" id="feat-chat">
+            <div class="row align-items-center g-4">
+              <div class="col-md-2 text-center">
+                <div style="font-size:3rem;color:var(--blue);"><i class="fa-solid fa-comments"></i></div>
+              </div>
+              <div class="col-md-10">
+                <div class="card-title mb-2">Live Chat — jQuery Messaging</div>
+                <p class="card-text">Built with jQuery's DOM manipulation and event system, the chat interface lets matched students message each other in real time. Share code snippets, links, and session notes. All messages are stored locally for the session — no server required for the static demo.</p>
+                <div class="mt-3 d-flex gap-2 flex-wrap">
+                  <span class="skill-badge">jQuery Powered</span>
+                  <span class="skill-badge">Real-time UI</span>
+                  <span class="skill-badge purple">Code Sharing</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feat-detail" id="feat-scheduler">
+            <div class="row align-items-center g-4">
+              <div class="col-md-2 text-center">
+                <div style="font-size:3rem;color:var(--blue);"><i class="fa-solid fa-calendar-check"></i></div>
+              </div>
+              <div class="col-md-10">
+                <div class="card-title mb-2">Swap Scheduler — Book Sessions</div>
+                <p class="card-text">The scheduler lets both students pick mutually available time slots. Bootstrap's date/time components power the UI. Once confirmed, the session appears on both profiles with a countdown timer. Students can reschedule or cancel with one click.</p>
+                <div class="mt-3 d-flex gap-2 flex-wrap">
+                  <span class="skill-badge">Mutual Slots</span>
+                  <span class="skill-badge">Countdown Timer</span>
+                  <span class="skill-badge purple">One-click Reschedule</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feat-detail" id="feat-portfolio">
+            <div class="row align-items-center g-4">
+              <div class="col-md-2 text-center">
+                <div style="font-size:3rem;color:var(--blue);"><i class="fa-solid fa-laptop-code"></i></div>
+              </div>
+              <div class="col-md-10">
+                <div class="card-title mb-2">Portfolio Builder — Showcase Your Work</div>
+                <p class="card-text">Every collaborative project you complete gets added to your LearnNova Portfolio. The builder auto-fills project title, collaborators, skills used, and date. Your portfolio page is public and shareable — a living proof of your growth that no certificate can replace.</p>
+                <div class="mt-3 d-flex gap-2 flex-wrap">
+                  <span class="skill-badge">Auto-filled</span>
+                  <span class="skill-badge">Public Page</span>
+                  <span class="skill-badge purple">Shareable Link</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="section" style="background:var(--navy-light);">
+    <div class="container">
+
+      <div class="section-header text-center" data-aos="fade-up">
+        <div class="section-badge">Comparison</div>
+        <h2 class="section-title">LearnNova vs <span>Traditional</span> Learning</h2>
+      </div>
+
+      <div data-aos="fade-up" data-aos-delay="100" style="overflow-x:auto;">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th><i class="fa-solid fa-bolt me-1"></i> LearnNova</th>
+              <th>Traditional</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Cost to learn a new skill</td>
+              <td><span class="tick"><i class="fa-solid fa-check"></i> Free</span></td>
+              <td><span class="cross"><i class="fa-solid fa-xmark"></i> Paid courses</span></td>
+            </tr>
+            <tr>
+              <td>Connect with campus peers</td>
+              <td><span class="tick"><i class="fa-solid fa-check"></i> Instant match</span></td>
+              <td><span class="cross"><i class="fa-solid fa-xmark"></i> No system</span></td>
+            </tr>
+            <tr>
+              <td>Verified skill proof</td>
+              <td><span class="tick"><i class="fa-solid fa-check"></i> Digital badge</span></td>
+              <td><span class="cross"><i class="fa-solid fa-xmark"></i> No verification</span></td>
+            </tr>
+            <tr>
+              <td>Portfolio of projects</td>
+              <td><span class="tick"><i class="fa-solid fa-check"></i> Auto-generated</span></td>
+              <td><span class="cross"><i class="fa-solid fa-xmark"></i> Manual only</span></td>
+            </tr>
+            <tr>
+              <td>Cross-department collaboration</td>
+              <td><span class="tick"><i class="fa-solid fa-check"></i> By design</span></td>
+              <td><span class="cross"><i class="fa-solid fa-xmark"></i> Siloed</span></td>
+            </tr>
+            <tr>
+              <td>Schedule learning sessions</td>
+              <td><span class="tick"><i class="fa-solid fa-check"></i> Built-in scheduler</span></td>
+              <td><span class="cross"><i class="fa-solid fa-xmark"></i> WhatsApp / manual</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-sm">
+    <div class="container text-center" data-aos="zoom-in">
+      <h2 class="section-title mb-3">Experience Every <span>Feature</span></h2>
+      <p class="section-subtitle mx-auto mb-4">Register and start using all features — completely free, forever.</p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="contact.html"    class="btn btn-primary"><i class="fa-solid fa-user-plus"></i> Register Now</a>
+        <a href="match-demo.html" class="btn btn-outline">Try Match Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-brand">LEARN<span>NOVA</span></div>
+          <p class="footer-tagline">Transforming Students Into Collaborative Learners</p>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6">
+          <div class="footer-heading">Pages</div>
+          <ul class="footer-links">
+            <li><a href="index.html"        class="footer-link">Home</a></li>
+            <li><a href="how-it-works.html" class="footer-link">How It Works</a></li>
+            <li><a href="features.html"     class="footer-link">Features</a></li>
+            <li><a href="profiles.html"     class="footer-link">Students</a></li>
+            <li><a href="match-demo.html"   class="footer-link">Match Demo</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-3 col-6">
+          <div class="footer-heading">More</div>
+          <ul class="footer-links">
+            <li><a href="about.html"   class="footer-link">About</a></li>
+            <li><a href="contact.html" class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-heading">Tech Stack</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span class="skill-badge">HTML5</span><span class="skill-badge">CSS3</span>
+            <span class="skill-badge">Bootstrap 5</span><span class="skill-badge">jQuery</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 LearnNova — Team NovaSync. Aptech Vision 2026.</p>
+        <p class="footer-copy">Eisha Fatima &amp; Ibrahim Kamran</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top" title="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+  $(document).ready(function(){
+    setTimeout(function(){ $('#preloader').addClass('hide'); setTimeout(function(){ $('#preloader').remove(); },400); },700);
+
+    // Feature detail toggle
+    $('.feat-tab-btn[data-feat]').on('click', function(){
+      var feat = $(this).data('feat');
+      var panel = $('#feat-detail-wrap');
+      var alreadyOpen = $('.feat-detail#feat-'+feat).hasClass('active');
+
+      $('.feat-detail').removeClass('active');
+      panel.hide();
+
+      if(!alreadyOpen){
+        $('#feat-'+feat).addClass('active');
+        panel.slideDown(300);
+        $('html,body').animate({ scrollTop: panel.offset().top - 100 }, 400);
+      }
+    });
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skill Match Demo — LearnNova</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+
+  <style>
+    #scroll-top{display:none;position:fixed;bottom:30px;right:30px;z-index:999;width:42px;height:42px;background:var(--blue);color:var(--white);border:none;border-radius:50%;font-size:1rem;cursor:pointer;transition:background var(--transition);}
+    #scroll-top:hover{background:var(--blue-light);}
+
+    /* Matcher UI */
+    .matcher-box {
+      background: var(--navy-light);
+      border: 1px solid rgba(59,139,212,0.2);
+      border-radius: var(--radius-lg);
+      padding: var(--gap-lg);
+    }
+    .select-styled {
+      width: 100%;
+      background: var(--navy-mid);
+      border: 1px solid rgba(59,139,212,0.2);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      appearance: none;
+      cursor: pointer;
+      transition: border-color 0.3s;
+    }
+    .select-styled:focus { outline: none; border-color: var(--blue); }
+    .select-styled option { background: var(--navy-mid); }
+
+    /* Skill pill checkboxes (multi-select) */
+    .skill-checkboxes{display:flex;flex-wrap:wrap;gap:10px;}
+    .skill-pill{display:inline-flex;align-items:center;gap:6px;background:var(--navy-mid);border:1px solid rgba(59,139,212,0.25);border-radius:50px;padding:10px 18px;cursor:pointer;font-size:0.85rem;color:#9DA3C4;transition:all 0.2s;user-select:none;}
+    .skill-pill:hover{border-color:var(--blue);color:#fff;background:rgba(59,139,212,0.12);}
+    .skill-pill.sel-offer{background:rgba(59,139,212,0.2);border-color:var(--blue);color:var(--blue-light);}
+    .skill-pill.sel-want{background:rgba(123,92,240,0.2);border-color:var(--purple);color:var(--purple-light);}
+    .pill-check{width:16px;height:16px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;}
+    .skill-pill.sel-offer .pill-check,.skill-pill.sel-want .pill-check{background:currentColor;}
+    .skill-pill.sel-offer .pill-check i,.skill-pill.sel-want .pill-check i{color:var(--navy-mid);font-size:8px;}
+
+    /* Result cards */
+    #match-results { display: none; }
+    .match-result-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(59,139,212,0.2);
+      border-radius: var(--radius-md);
+      padding: var(--gap-md);
+      transition: all 0.3s;
+    }
+    .match-result-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 0 20px rgba(59,139,212,0.15);
+      transform: translateY(-3px);
+    }
+    .match-score {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--blue);
+    }
+
+    /* Chart container */
+    .chart-wrap {
+      background: var(--navy-light);
+      border: 1px solid rgba(59,139,212,0.15);
+      border-radius: var(--radius-md);
+      padding: var(--gap-md);
+      position: relative;
+      height: 300px;
+    }
+    .demo-user-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--purple);
+  margin-bottom: 10px;
+}
+  </style>
+</head>
+<body>
+
+  <!-- <div id="preloader"><div class="pre-logo">LEARN<span>NOVA</span></div><div class="spinner"></div></div> -->
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container nav-container">
+      
+      <a href="index.html" class="navbar-brand">
+        LEARN<span>NOVA</span>
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#learnNovaNavbar">
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="learnNovaNavbar">
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
+          <li class="nav-item"><a href="index.html" class="nav-link ">Home</a></li>
+          <li class="nav-item"><a href="how-it-works.html" class="nav-link">Workflow</a></li>
+          <li class="nav-item"><a href="features.html" class="nav-link">Features</a></li>
+          <li class="nav-item"><a href="profiles.html" class="nav-link">Students</a></li>
+          <li class="nav-item"><a href="match-demo.html" class="nav-link active">Demo</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          
+          <li class="nav-item ms-lg-3"><a href="login.html" class="nav-link">Login</a></li>
+          <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
+            <a href="signup.html" class="btn btn-primary navbar-btn-original">
+              <i class="fa-solid fa-user-plus me-1"></i>SignUp
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+  <div style="margin-top: 85px;"></div>
+  <!-- PAGE HERO -->
+  <section class="page-header text-center" style="position: relative; background: linear-gradient(135deg, rgba(10, 25, 47, 0.93) 25%, rgba(23, 42, 69, 0.85) 100%), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80') no-repeat center center; background-size: cover; padding: 140px 0 70px 0; border-bottom: 1px solid rgba(59, 139, 212, 0.2); overflow: hidden;">
+  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--blue), var(--purple), transparent);"></div>
+  <div class="container" data-aos="fade-down">
+    <h1 class="display-4 fw-bold text-white mb-2">Skill Match Engine</h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="index.html" style="color: var(--blue); text-decoration: none;">Home</a></li>
+        <li class="breadcrumb-item active text-gray-400" aria-current="page">Match Demo</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+  <!-- MATCHER UI -->
+  <section class="section-sm">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+          <div class="matcher-box" data-aos="zoom-in">
+            <div class="text-center mb-4">
+              <div class="section-badge">Step 1 of 2</div>
+              <h3 class="section-title mt-2">Tell Us About <span>Your Skills</span></h3>
+            </div>
+
+            <div class="row g-4 mb-4">
+              <div class="col-md-6">
+                <label class="form-label">
+                  <i class="fa-solid fa-graduation-cap me-1" style="color:var(--blue);"></i>
+                  I Know / Can Teach <span style="color:var(--blue);font-size:0.75rem;">(select any)</span>
+                </label>
+                <div class="skill-checkboxes" id="offer-pills">
+                  <div class="skill-pill" data-skill="javascript"><span class="pill-check"><i class="fa-solid fa-check"></i></span>JavaScript</div>
+                  <div class="skill-pill" data-skill="bootstrap"><span class="pill-check"><i class="fa-solid fa-check"></i></span>Bootstrap</div>
+                  <div class="skill-pill" data-skill="html-css"><span class="pill-check"><i class="fa-solid fa-check"></i></span>HTML/CSS</div>
+                  <div class="skill-pill" data-skill="python"><span class="pill-check"><i class="fa-solid fa-check"></i></span>Python</div>
+                  <div class="skill-pill" data-skill="csharp"><span class="pill-check"><i class="fa-solid fa-check"></i></span>C#</div>
+                  <div class="skill-pill" data-skill="mysql"><span class="pill-check"><i class="fa-solid fa-check"></i></span>MySQL</div>
+                  <div class="skill-pill" data-skill="php"><span class="pill-check"><i class="fa-solid fa-check"></i></span>PHP</div>
+                  <div class="skill-pill" data-skill="figma"><span class="pill-check"><i class="fa-solid fa-check"></i></span>Figma</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">
+                  <i class="fa-solid fa-book-open me-1" style="color:var(--purple);"></i>
+                  I Want to Learn <span style="color:var(--purple);font-size:0.75rem;">(select any)</span>
+                </label>
+                <div class="skill-checkboxes" id="want-pills">
+                  <div class="skill-pill" data-skill="javascript"><span class="pill-check"><i class="fa-solid fa-check"></i></span>JavaScript</div>
+                  <div class="skill-pill" data-skill="bootstrap"><span class="pill-check"><i class="fa-solid fa-check"></i></span>Bootstrap</div>
+                  <div class="skill-pill" data-skill="html-css"><span class="pill-check"><i class="fa-solid fa-check"></i></span>HTML/CSS</div>
+                  <div class="skill-pill" data-skill="python"><span class="pill-check"><i class="fa-solid fa-check"></i></span>Python</div>
+                  <div class="skill-pill" data-skill="csharp"><span class="pill-check"><i class="fa-solid fa-check"></i></span>C#</div>
+                  <div class="skill-pill" data-skill="mysql"><span class="pill-check"><i class="fa-solid fa-check"></i></span>MySQL</div>
+                  <div class="skill-pill" data-skill="php"><span class="pill-check"><i class="fa-solid fa-check"></i></span>PHP</div>
+                  <div class="skill-pill" data-skill="figma"><span class="pill-check"><i class="fa-solid fa-check"></i></span>Figma</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center">
+              <button class="btn btn-primary" id="find-match-btn" style="min-width:200px;">
+                <i class="fa-solid fa-bolt me-1"></i> Find My Match
+              </button>
+            </div>
+
+            <!-- Loading spinner (hidden by default) -->
+            <div id="match-loading" class="text-center mt-4" style="display:none;">
+              <div class="spinner mb-3"></div>
+              <p style="font-family:var(--font-heading);font-size:0.7rem;letter-spacing:0.1em;color:var(--blue);">
+                SCANNING CAMPUS NETWORK...
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATCH RESULTS (shown by jQuery) -->
+  <section class="section-sm" id="match-results">
+    <div class="container">
+
+      <div class="section-header text-center" data-aos="fade-up">
+        <div class="section-badge">Match Found!</div>
+        <h2 class="section-title">Your <span>Perfect Matches</span></h2>
+        <p class="section-subtitle mx-auto" id="match-summary-text"></p>
+      </div>
+
+      <div class="row g-4" id="match-cards-row"></div>
+
+      <div class="text-center mt-5">
+        <a href="contact.html" class="btn btn-primary me-3">
+          <i class="fa-solid fa-user-plus me-1"></i> Register to Connect
+        </a>
+        <button class="btn btn-outline" id="reset-match">
+          <i class="fa-solid fa-rotate-left me-1"></i> Try Again
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CHART SECTION -->
+  <section class="section" style="background:var(--navy-light);">
+    <div class="container">
+
+      <div class="section-header text-center" data-aos="fade-up">
+        <div class="section-badge">Campus Data</div>
+        <h2 class="section-title">Skill Demand vs <span>Supply</span></h2>
+        <p class="section-subtitle mx-auto">
+          How many students offer vs need each skill on campus right now.
+        </p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+          <div class="chart-wrap">
+            <canvas id="skillChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4"><div class="footer-brand">LEARN<span>NOVA</span></div><p class="footer-tagline">Transforming Students Into Collaborative Learners</p></div>
+        <div class="col-lg-2 col-6"><div class="footer-heading">Pages</div><ul class="footer-links"><li><a href="index.html" class="footer-link">Home</a></li><li><a href="how-it-works.html" class="footer-link">How It Works</a></li><li><a href="features.html" class="footer-link">Features</a></li><li><a href="profiles.html" class="footer-link">Students</a></li></ul></div>
+        <div class="col-lg-2 col-6"><div class="footer-heading">More</div><ul class="footer-links"><li><a href="match-demo.html" class="footer-link">Match Demo</a></li><li><a href="about.html" class="footer-link">About</a></li><li><a href="contact.html" class="footer-link">Contact</a></li></ul></div>
+        <div class="col-lg-4"><div class="footer-heading">Tech Stack</div><div style="display:flex;flex-wrap:wrap;gap:8px;"><span class="skill-badge">HTML5</span><span class="skill-badge">Bootstrap 5</span><span class="skill-badge">jQuery</span><span class="skill-badge">Chart.js</span></div></div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 LearnNova — Team NovaSync. Aptech Vision 2026.</p>
+        <p class="footer-copy">Eisha Fatima &amp; Ibrahim Kamran</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top" title="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/charts.js"></script>
+  <script src="assets/js/match.js"></script>
+
+</body>
+</html>

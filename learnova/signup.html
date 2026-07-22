@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register / Contact — LearnNova</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/animations.css" />
+  <style>
+    #scroll-top{display:none;position:fixed;bottom:30px;right:30px;z-index:999;width:42px;height:42px;background:var(--blue);color:var(--white);border:none;border-radius:50%;font-size:1rem;cursor:pointer;}
+    #scroll-top:hover{background:var(--blue-light);}
+    .skill-checkboxes{display:flex;flex-wrap:wrap;gap:10px;}
+    .skill-pill{display:inline-flex;align-items:center;gap:6px;background:#141B4D;border:1px solid rgba(59,139,212,0.25);border-radius:50px;padding:8px 16px;cursor:pointer;font-size:0.85rem;color:#9DA3C4;transition:all 0.2s;user-select:none;font-family:'Exo 2',sans-serif;}
+    .skill-pill:hover{border-color:#3B8BD4;color:#fff;background:rgba(59,139,212,0.12);}
+    .skill-pill.sel-offer{background:rgba(59,139,212,0.2);border-color:#3B8BD4;color:#3B8BD4;}
+    .skill-pill.sel-want{background:rgba(123,92,240,0.2);border-color:#7B5CF0;color:#9B7DF8;}
+    .pill-check{width:16px;height:16px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;}
+    .skill-pill.sel-offer .pill-check,.skill-pill.sel-want .pill-check{background:currentColor;color:#0A0F2C;}
+    .contact-info-card{background:var(--navy-light);border:1px solid rgba(59,139,212,0.15);border-radius:var(--radius-md);padding:var(--gap-md);}
+    .contact-info-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:var(--gap-md);}
+    .contact-info-item:last-child{margin-bottom:0;}
+    .contact-info-icon{width:38px;height:38px;background:rgba(59,139,212,0.1);border:1px solid rgba(59,139,212,0.2);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:1rem;flex-shrink:0;}
+    .contact-info-label{font-size:0.7rem;color:var(--gray-500);margin-bottom:3px;font-family:var(--font-heading);letter-spacing:0.1em;text-transform:uppercase;}
+    .contact-info-value{font-size:0.9rem;color:var(--white);}
+    .avatar-upload-row{display:flex;align-items:center;gap:16px;}
+    .avatar-upload-row img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(59,139,212,0.3);background:var(--navy-light);}
+    .avatar-upload-label{padding:8px 16px;font-size:0.8rem;cursor:pointer;margin-bottom:0;}
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container nav-container">
+      
+      <a href="index.html" class="navbar-brand">
+        LEARN<span>NOVA</span>
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#learnNovaNavbar">
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+        <span class="toggler-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="learnNovaNavbar">
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
+          <li class="nav-item"><a href="index.html" class="nav-link ">Home</a></li>
+          <li class="nav-item"><a href="how-it-works.html" class="nav-link">Workflow</a></li>
+          <li class="nav-item"><a href="features.html" class="nav-link">Features</a></li>
+          <li class="nav-item"><a href="profiles.html" class="nav-link">Students</a></li>
+          <li class="nav-item"><a href="match-demo.html" class="nav-link">Demo</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+          
+          <li class="nav-item ms-lg-3"><a href="login.html" class="nav-link">Login</a></li>
+          <li class="nav-item ms-lg-2 mt-3 mt-lg-0">
+            <a href="signup.html" class="btn btn-primary navbar-btn-original">
+              <i class="fa-solid fa-user-plus me-1"></i>SignUp
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+  <div style="margin-top: 85px;"></div>
+
+  <section class="page-hero">
+    <div class="container" data-aos="fade-up">
+      <div class="section-badge">Join LearnNova</div>
+      <h1 class="section-title mt-2">Register <span>Now</span></h1>
+      <p class="section-subtitle mx-auto">Create your profile, list your skills, and start connecting with your perfect swap partner today.</p>
+    </div>
+  </section>
+
+  <section class="section-sm">
+    <div class="container">
+      <div class="row g-5">
+
+        <div class="col-lg-7" data-aos="fade-right">
+          <div class="card-glow p-4 p-md-5">
+            <div class="card-title mb-1" style="font-size:1rem;"><i class="fa-solid fa-user-plus me-2" style="color:var(--blue);"></i>Create Your Profile</div>
+            <p class="card-text mb-4" style="font-size:0.85rem;">Fill in your details — takes less than 2 minutes.</p>
+
+            <div class="form-success" id="form-success"></div>
+
+            <div id="registration-form">
+
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="f-name" placeholder="e.g. Ahmed Raza" autocomplete="off" />
+                <div class="form-error" id="err-name">Please enter your full name.</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="f-email" placeholder="e.g. ahmed@aptech.edu.pk" autocomplete="off" />
+                <div class="form-error" id="err-email">Please enter a valid email address.</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" id="f-password" placeholder="At least 6 characters" autocomplete="new-password" />
+                <div class="form-error" id="err-password">Password must be at least 6 characters.</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="f-password-confirm" placeholder="Re-enter your password" autocomplete="new-password" />
+                <div class="form-error" id="err-password-confirm">Passwords do not match.</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Department</label>
+                <select class="form-control" id="f-dept">
+                  <option value="">— Select your department —</option>
+                  <option value="SECP">SECP — Software Engineering</option>
+                  <option value="DIT">DIT — Information Technology</option>
+                  <option value="DGD">DGD — Graphic Design</option>
+                  <option value="ACCP">ACCP — Computer Programming</option>
+                  <option value="Other">Other</option>
+                </select>
+                <div class="form-error" id="err-dept">Please select your department.</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Profile Picture <span style="color:var(--gray-500);font-size:0.75rem;text-transform:none;letter-spacing:0;">(optional)</span></label>
+                <div class="avatar-upload-row">
+                  <img id="avatar-preview" src="https://ui-avatars.com/api/?background=141B4D&color=3B8BD4&size=128" alt="Profile preview" />
+                  <label for="f-avatar" class="btn btn-outline avatar-upload-label">
+                    <i class="fa-solid fa-camera me-2"></i>Choose Photo
+                  </label>
+                  <input type="file" id="f-avatar" accept="image/*" style="display:none;" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Skills I Can Teach <span style="color:var(--blue);font-size:0.75rem;text-transform:none;letter-spacing:0;">(tap to select)</span></label>
+                <div class="skill-checkboxes" id="offer-pills">
+                  <div class="skill-pill" data-skill="JavaScript"><span class="pill-check"><i class="fa-solid fa-check"></i></span>JavaScript</div>
+                  <div class="skill-pill" data-skill="Bootstrap"><span class="pill-check"><i class="fa-solid fa-check"></i></span>Bootstrap</div>
+                  <div class="skill-pill" data-skill="HTML/CSS"><span class="pill-check"><i class="fa-solid fa-check"></i></span>HTML/CSS</div>
+                  <div class="skill-pill" data-skill="Python"><span class="pill-check"><i class="fa-solid fa-check"></i></span>Python</div>
+                  <div class="skill-pill" data-skill="C#"><span class="pill-check"><i class="fa-solid fa-check"></i></span>C#</div>
+                  <div class="skill-pill" data-skill="MySQL"><span class="pill-check"><i class="fa-solid fa-check"></i></span>MySQL</div>
+                  <div class="skill-pill" data-skill="PHP"><span class="pill-check"><i class="fa-solid fa-check"></i></span>PHP</div>
+                  <div class="skill-pill" data-skill="Figma"><span class="pill-check"><i class="fa-solid fa-check"></i></span>Figma</div>
+                </div>
+                <div class="form-error" id="err-offer">Please select at least one skill you can teach.</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" style="color:var(--purple-light);">Skills I Want to Learn <span style="color:var(--purple);font-size:0.75rem;text-transform:none;letter-spacing:0;">(tap to select)</span></label>
+                <div class="skill-checkboxes" id="want-pills">
+                  <div class="skill-pill" data-skill="JavaScript"><span class="pill-check"><i class="fa-solid fa-check"></i></span>JavaScript</div>
+                  <div class="skill-pill" data-skill="Bootstrap"><span class="pill-check"><i class="fa-solid fa-check"></i></span>Bootstrap</div>
+                  <div class="skill-pill" data-skill="HTML/CSS"><span class="pill-check"><i class="fa-solid fa-check"></i></span>HTML/CSS</div>
+                  <div class="skill-pill" data-skill="Python"><span class="pill-check"><i class="fa-solid fa-check"></i></span>Python</div>
+                  <div class="skill-pill" data-skill="C#"><span class="pill-check"><i class="fa-solid fa-check"></i></span>C#</div>
+                  <div class="skill-pill" data-skill="MySQL"><span class="pill-check"><i class="fa-solid fa-check"></i></span>MySQL</div>
+                  <div class="skill-pill" data-skill="PHP"><span class="pill-check"><i class="fa-solid fa-check"></i></span>PHP</div>
+                  <div class="skill-pill" data-skill="Figma"><span class="pill-check"><i class="fa-solid fa-check"></i></span>Figma</div>
+                </div>
+                <div class="form-error" id="err-want">Please select at least one skill you want to learn.</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Short Bio <span style="color:var(--gray-500);font-size:0.75rem;text-transform:none;letter-spacing:0;">(optional)</span></label>
+                <textarea class="form-control" id="f-bio" rows="3" placeholder="Tell other students a bit about yourself..."></textarea>
+              </div>
+
+              <button class="btn btn-primary w-100 mt-2" id="submit-btn" style="padding:16px;">
+                <i class="fa-solid fa-bolt me-2"></i> Submit My Profile
+              </button>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5" data-aos="fade-left" data-aos-delay="150">
+          <div class="row g-3 mb-4">
+            <div class="col-6"><div style="background:var(--navy-light);border:1px solid rgba(59,139,212,0.15);border-radius:var(--radius-md);padding:20px;text-align:center;"><div style="font-family:var(--font-heading);font-size:2rem;font-weight:900;color:var(--blue);">500+</div><div style="font-size:0.78rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.08em;">Students</div></div></div>
+            <div class="col-6"><div style="background:var(--navy-light);border:1px solid rgba(59,139,212,0.15);border-radius:var(--radius-md);padding:20px;text-align:center;"><div style="font-family:var(--font-heading);font-size:2rem;font-weight:900;color:var(--purple);">8</div><div style="font-size:0.78rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.08em;">Skills Listed</div></div></div>
+            <div class="col-6"><div style="background:var(--navy-light);border:1px solid rgba(59,139,212,0.15);border-radius:var(--radius-md);padding:20px;text-align:center;"><div style="font-family:var(--font-heading);font-size:2rem;font-weight:900;color:var(--blue);">100%</div><div style="font-size:0.78rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.08em;">Free</div></div></div>
+            <div class="col-6"><div style="background:var(--navy-light);border:1px solid rgba(59,139,212,0.15);border-radius:var(--radius-md);padding:20px;text-align:center;"><div style="font-family:var(--font-heading);font-size:2rem;font-weight:900;color:var(--purple);">4</div><div style="font-size:0.78rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:0.08em;">Departments</div></div></div>
+          </div>
+          <div class="contact-info-card mb-4">
+            <div class="contact-info-item"><div class="contact-info-icon"><i class="fa-solid fa-location-dot"></i></div><div><div class="contact-info-label">Location</div><div class="contact-info-value">Aptech Computer Education, Karachi</div></div></div>
+            <div class="contact-info-item"><div class="contact-info-icon"><i class="fa-solid fa-envelope"></i></div><div><div class="contact-info-label">Email</div><div class="contact-info-value">novasync@aptech.edu.pk</div></div></div>
+            <div class="contact-info-item"><div class="contact-info-icon"><i class="fa-solid fa-users"></i></div><div><div class="contact-info-label">Team</div><div class="contact-info-value">Eisha Fatima &amp; Ibrahim Kamran</div></div></div>
+          </div>
+          <div style="background:rgba(59,139,212,0.06);border:1px solid rgba(59,139,212,0.15);border-radius:var(--radius-md);padding:var(--gap-md);">
+            <div class="footer-heading mb-3">Quick Actions</div>
+            <div class="d-flex flex-column gap-2">
+              <a href="match-demo.html" class="btn btn-outline w-100 text-start" style="padding:10px 16px;font-size:0.8rem;"><i class="fa-solid fa-bolt me-2" style="color:var(--blue);"></i>Try Skill Match Demo</a>
+              <a href="profiles.html" class="btn btn-outline w-100 text-start" style="padding:10px 16px;font-size:0.8rem;"><i class="fa-solid fa-users me-2" style="color:var(--blue);"></i>Browse Student Profiles</a>
+              <a href="how-it-works.html" class="btn btn-outline w-100 text-start" style="padding:10px 16px;font-size:0.8rem;"><i class="fa-solid fa-circle-info me-2" style="color:var(--blue);"></i>How It Works</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--navy-light);">
+    <div class="container">
+      <div class="section-header text-center" data-aos="fade-up">
+        <div class="section-badge">FAQ</div>
+        <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+          <div class="accordion-item"><button class="accordion-btn">Is LearnNova free to use?<i class="fa-solid fa-chevron-down"></i></button><div class="accordion-body"><p>Yes — completely free. Students exchange skills directly. No fees, subscriptions, or hidden costs.</p></div></div>
+          <div class="accordion-item"><button class="accordion-btn">Who can join LearnNova?<i class="fa-solid fa-chevron-down"></i></button><div class="accordion-body"><p>Any Aptech student — SECP, DIT, DGD, ACCP, and more. The more diverse the skills, the better the matches.</p></div></div>
+          <div class="accordion-item"><button class="accordion-btn">How does the matching algorithm work?<i class="fa-solid fa-chevron-down"></i></button><div class="accordion-body"><p>You list skills you can teach and want to learn. The platform finds students with perfectly complementary skills for a bilateral swap.</p></div></div>
+          <div class="accordion-item"><button class="accordion-btn">Is this a dynamic website?<i class="fa-solid fa-chevron-down"></i></button><div class="accordion-body"><p>LearnNova is a static frontend prototype — HTML, CSS, Bootstrap, JavaScript, jQuery — for Aptech Vision 2026. Data is saved via LocalStorage. A PHP+MySQL backend is planned.</p></div></div>
+          <div class="accordion-item"><button class="accordion-btn">Will LearnNova expand beyond Aptech Karachi?<i class="fa-solid fa-chevron-down"></i></button><div class="accordion-body"><p>Yes — multi-campus 2027, mobile app 2028, multilingual 2030, global Aptech network 2033.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4"><div class="footer-brand">LEARN<span>NOVA</span></div><p class="footer-tagline">Transforming Students Into Collaborative Learners</p></div>
+        <div class="col-lg-2 col-6"><div class="footer-heading">Pages</div><ul class="footer-links"><li><a href="index.html" class="footer-link">Home</a></li><li><a href="how-it-works.html" class="footer-link">How It Works</a></li><li><a href="features.html" class="footer-link">Features</a></li><li><a href="profiles.html" class="footer-link">Students</a></li></ul></div>
+        <div class="col-lg-2 col-6"><div class="footer-heading">More</div><ul class="footer-links"><li><a href="match-demo.html" class="footer-link">Match Demo</a></li><li><a href="about.html" class="footer-link">About</a></li><li><a href="contact.html" class="footer-link">Contact</a></li></ul></div>
+        <div class="col-lg-4"><div class="footer-heading">Tech Stack</div><div style="display:flex;flex-wrap:wrap;gap:8px;"><span class="skill-badge">HTML5</span><span class="skill-badge">CSS3</span><span class="skill-badge">Bootstrap 5</span><span class="skill-badge">jQuery</span></div></div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 LearnNova — Team NovaSync. Built for Aptech Vision 2026.</p>
+        <p class="footer-copy">Eisha Fatima &amp; Ibrahim Kamran</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top" title="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/storage.js"></script>
+
+  <script>
+  $(document).ready(function(){
+
+    AOS.init({duration:700,once:true,offset:80});
+
+    var avatarData = null;
+
+    /* AVATAR upload + preview */
+    $('#f-avatar').on('change', function (e) {
+      var file = e.target.files[0];
+      if (!file) return;
+      if (!file.type.startsWith('image/')) { alert('Please select an image file.'); return; }
+      var reader = new FileReader();
+      reader.onload = function (ev) {
+        avatarData = ev.target.result;
+        $('#avatar-preview').attr('src', avatarData);
+      };
+      reader.readAsDataURL(file);
+    });
+
+    /* OFFER pills */
+    $('#offer-pills .skill-pill').on('click', function(){
+      $(this).toggleClass('sel-offer');
+      $('#err-offer').removeClass('show');
+    });
+
+    /* WANT pills */
+    $('#want-pills .skill-pill').on('click', function(){
+      $(this).toggleClass('sel-want');
+      $('#err-want').removeClass('show');
+    });
+
+    /* SUBMIT */
+    $('#submit-btn').on('click', function(){
+      var valid = true;
+      $('.form-control').removeClass('error');
+      $('.form-error').removeClass('show');
+
+      var name  = $('#f-name').val().trim();
+      var email = $('#f-email').val().trim();
+      var password = $('#f-password').val();
+      var passwordConfirm = $('#f-password-confirm').val();
+      var dept  = $('#f-dept').val();
+
+      if(name.length < 2){ $('#f-name').addClass('error'); $('#err-name').addClass('show'); valid=false; }
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ $('#f-email').addClass('error'); $('#err-email').addClass('show'); valid=false; }
+      if(password.length < 6){ $('#f-password').addClass('error'); $('#err-password').addClass('show'); valid=false; }
+      if(passwordConfirm !== password || passwordConfirm===''){ $('#f-password-confirm').addClass('error'); $('#err-password-confirm').addClass('show'); valid=false; }
+      if(!dept){ $('#f-dept').addClass('error'); $('#err-dept').addClass('show'); valid=false; }
+
+      // Prevent duplicate emails in the login credentials store
+      if(valid){
+        var existingUsers = JSON.parse(localStorage.getItem('learnova_users') || '[]');
+        var emailTaken = existingUsers.some(function(u){ return u.email.toLowerCase() === email.toLowerCase(); });
+        if(emailTaken){
+          $('#f-email').addClass('error');
+          $('#err-email').text('An account with this email already exists. Try logging in instead.').addClass('show');
+          valid=false;
+        }
+      }
+
+      var offers=[], wants=[];
+      $('#offer-pills .skill-pill.sel-offer').each(function(){ offers.push($(this).data('skill')); });
+      $('#want-pills .skill-pill.sel-want').each(function(){ wants.push($(this).data('skill')); });
+
+      if(offers.length===0){ $('#err-offer').addClass('show'); valid=false; }
+      if(wants.length===0){ $('#err-want').addClass('show'); valid=false; }
+      if(!valid) return;
+
+      var $btn=$(this);
+      $btn.prop('disabled',true).html('<span class="spinner d-inline-block me-2" style="width:16px;height:16px;border-width:2px;vertical-align:middle;"></span> Saving...');
+
+      var studentData={
+        name:name, email:email,
+        dept:$('#f-dept option:selected').text(),
+        offers:offers, wants:wants,
+        bio:$('#f-bio').val().trim()||'Registered via LearnNova platform.',
+        avatar:avatarData
+      };
+
+      setTimeout(function(){
+        var saved = addStudent(studentData);
+
+        // Save login credentials so login.html can authenticate this account
+        var usersList = JSON.parse(localStorage.getItem('learnova_users') || '[]');
+        usersList.push({ name: name, email: email, password: password });
+        localStorage.setItem('learnova_users', JSON.stringify(usersList));
+
+        $('#registration-form').slideUp(300, function(){
+          $('#form-success')
+            .html(
+              '<i class="fa-solid fa-circle-check" style="font-size:2.2rem;display:block;margin-bottom:14px;color:#5DCAA5;"></i>'+
+              '<strong style="font-size:1.1rem;color:#fff;">Welcome, '+name+'!</strong><br><br>'+
+              '<span style="font-size:0.9rem;color:#9DA3C4;">Profile saved '+(saved?'✅':'')+'!<br>'+
+              'Visit <a href="profiles.html" style="color:var(--blue);">Students page</a> to see your profile.</span>'
+            )
+            .addClass('show').hide().fadeIn(400);
+        });
+      },1200);
+    });
+
+    $('#f-name,#f-email,#f-dept,#f-password,#f-password-confirm').on('input change',function(){
+      $(this).removeClass('error');
+      $('#err-'+$(this).attr('id').replace('f-','')).removeClass('show');
+    });
+
+    // Reset the email error message back to default if it was overridden by the duplicate-account check
+    $('#f-email').on('input', function(){
+      $('#err-email').text('Please enter a valid email address.');
+    });
+
+  });
+  </script>
+
+</body>
+</html>
